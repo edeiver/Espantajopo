@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "747654896346",
+    "firebase_url": "https://money-589f9.firebaseio.com",
+    "project_id": "money-589f9",
+    "storage_bucket": "money-589f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747654896346:android:53a66999093b76fc",
+        "android_client_info": {
+          "package_name": "com.example.moneycontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747654896346-u6edr5rddglcotljj0m3jqs05mkrlo9m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFmO4KXKpiQbVbUMEuwZs247G5HezSsu0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "747654896346-u6edr5rddglcotljj0m3jqs05mkrlo9m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
