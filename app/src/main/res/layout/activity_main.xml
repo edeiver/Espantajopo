@@ -123,7 +123,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/footer_line" />
 
-    <TextView
+    <!-- <TextView
         android:id="@+id/facebook_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -134,7 +134,19 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/footer_line"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
-        app:layout_constraintStart_toStartOf="@id/guideline_left" />
+        app:layout_constraintStart_toStartOf="@id/guideline_left" />-->
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/signInButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="50dp"
+        android:drawablePadding="8dp"
+        app:layout_constraintBottom_toTopOf="@id/footer_line"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"/>
 
     <View
         android:id="@+id/line1"
