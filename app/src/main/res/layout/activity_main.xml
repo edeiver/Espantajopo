@@ -152,12 +152,13 @@
         android:id="@+id/line1"
         android:layout_width="120dp"
         android:layout_height="1dp"
+        android:layout_marginTop="56dp"
         android:background="@color/login_from_details_medium"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/forgot_password"
         app:layout_constraintBottom_toTopOf="@+id/facebook_login"
+        app:layout_constraintEnd_toStartOf="@+id/or"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintEnd_toStartOf="@+id/or"/>
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/forgot_password" />
 
     <TextView
         android:id="@+id/or"
@@ -185,11 +186,11 @@
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_height="0dp"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:visibility="gone"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

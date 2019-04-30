@@ -9,4 +9,6 @@
     <string name="dont_acc">Don\'t have an account?</string>
     <string name="log_in_error">Log in error</string>
     <string name="firebase_auth_error">Firebase auth error</string>
+    <string name="close_sesion_error">Error to sing out</string>
+    <string name="revoke">Revoke acces</string>
 </resources>
