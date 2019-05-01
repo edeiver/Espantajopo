@@ -86,6 +86,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/dont_remember"
         android:textColor="@color/login_from_details"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/BtnLogin" />
@@ -154,7 +155,6 @@
         android:layout_height="1dp"
         android:layout_marginTop="56dp"
         android:background="@color/login_from_details_medium"
-        app:layout_constraintBottom_toTopOf="@+id/facebook_login"
         app:layout_constraintEnd_toStartOf="@+id/or"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
@@ -187,9 +187,13 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/or"
+        app:layout_constraintTop_toTopOf="@id/forgot_password"
+        app:layout_constraintEnd_toStartOf="@id/guideline_right"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
         />
 
 </android.support.constraint.ConstraintLayout>
