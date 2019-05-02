@@ -1,4 +1,12 @@
 package com.example.moneycontrol;
 
-public class SingUp {
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+public class SingUp extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.sing_up);
+    }
 }
