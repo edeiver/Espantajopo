@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".UserDetails"></activity>
+        <activity android:name=".SingUp"></activity>
     </application>
 
 </manifest>

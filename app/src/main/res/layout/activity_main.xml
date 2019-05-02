@@ -115,31 +115,33 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/BtnLogin" />
+
     <View
         android:id="@+id/footer_line"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="68dp"
         android:background="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
+    <Button
+        android:id="@+id/BtnSingUp"
+        android:layout_width="204dp"
+        android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:background="@drawable/btn_bg"
         android:text="@string/dont_acc"
         android:textColor="@color/login_from_details"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/footer_line"
-        >
+        app:layout_constraintTop_toTopOf="@+id/footer_line">
 
-    </TextView>
+    </Button>
 
 
     <TextView
@@ -150,7 +152,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/footer_line" />
+        app:layout_constraintTop_toBottomOf="@id/footer_line"
+        />
 
     <!-- <TextView
         android:id="@+id/facebook_login"
