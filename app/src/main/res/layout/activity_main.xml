@@ -31,9 +31,32 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:src="@mipmap/ic_launcher_foreground"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/icon_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/Billabong"
+        android:text="ESPANTAJOPO"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/login_from_details"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="@+id/icon"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765" />
 
     <EditText
         android:id="@+id/userName"
