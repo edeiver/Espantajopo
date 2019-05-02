@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_login"
+    android:background="@drawable/bg_user"
     tools:context=".MainActivity">
 
     <android.support.constraint.Guideline
@@ -46,9 +46,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/Billabong"
+        android:fontFamily="@font/billabong"
         android:text="ESPANTAJOPO"
-        app:fontFamily="@font/Wrong Hunt"
+        android:textAllCaps="false"
+        android:textColor="@color/login_from_details"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="@+id/icon"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintHorizontal_bias="0.496"
@@ -97,7 +99,7 @@
         android:layout_marginRight="8dp"
         android:background="@drawable/btn_bg"
         android:text="@string/login_now"
-        android:textColor="@color/login_from_details_medium"
+        android:textColor="@color/login_from_details"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -119,7 +121,7 @@
         android:layout_height="1dp"
         android:layout_marginBottom="50dp"
         android:background="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"></View>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -128,17 +130,20 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/dont_acc"
         android:textColor="@color/login_from_details"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/footer_line">
+        app:layout_constraintTop_toBottomOf="@+id/footer_line"
+        >
 
     </TextView>
 
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/login_from_details"

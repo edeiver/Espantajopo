@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
+    <item android:state_pressed="false">
         <shape>
             <stroke android:color="@color/login_from_details" android:width="2dp"></stroke>
             <corners android:radius="2dp"></corners>
