@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_user"
+    android:background="@drawable/bg_test"
     tools:context=".MainActivity">
 
     <android.support.constraint.Guideline
@@ -46,7 +46,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/billabong"
+        android:fontFamily="@font/sofiaregular"
         android:text="ESPANTAJOPO"
         android:textAllCaps="false"
         android:textColor="@color/login_from_details"
@@ -131,13 +131,14 @@
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/btn_bg"
         android:text="@string/dont_acc"
         android:textColor="@color/login_from_details"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/footer_line">
 

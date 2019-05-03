@@ -83,7 +83,7 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
 
     private void goLogInScreen() {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+       // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
@@ -128,6 +128,7 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
 
         if (firebaseAuthListener != null) {
             firebaseAuth.removeAuthStateListener(firebaseAuthListener);
+            Toast.makeText(getApplicationContext(), R.string.close_s, Toast.LENGTH_LONG).show();
         }
     }
 }
