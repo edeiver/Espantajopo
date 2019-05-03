@@ -12,4 +12,7 @@
     <string name="close_sesion_error">Error to sing out</string>
     <string name="revoke">Revoke acces</string>
     <string name="close_s">Debe cerrar sesion para salir</string>
+    <string name="name">Mame</string>
+    <string name="lastname">Lastname</string>
+    <string name="r_pass">Re-type the password</string>
 </resources>
