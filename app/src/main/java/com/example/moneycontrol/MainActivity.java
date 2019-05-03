@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         if (firebaseAuthListener != null) {
             firebaseAuth.removeAuthStateListener(firebaseAuthListener);
+            //Toast.makeText(getApplicationContext(), R.string.close_s, Toast.LENGTH_LONG).show();
         }
     }
     private void goSingup() {
