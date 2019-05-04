@@ -49,7 +49,7 @@
         android:fontFamily="@font/sofiaregular"
         android:text="ESPANTAJOPO"
         android:textAllCaps="false"
-        android:textColor="@color/login_from_details"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="@+id/icon"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
@@ -94,7 +94,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/btn_bg"
@@ -175,11 +175,11 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="30dp"
         android:drawablePadding="8dp"
         app:layout_constraintBottom_toTopOf="@id/footer_line"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"/>
+        app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
     <View
         android:id="@+id/line1"
