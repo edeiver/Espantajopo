@@ -2,11 +2,14 @@ package com.example.moneycontrol;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.solver.widgets.Guideline;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -27,17 +30,31 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     private GoogleApiClient  googleApiClient;
     private SignInButton sigInButton;
-    private Button button;
+    private Button button, login;
     public static final int  SIGN_IN_CODE = 777;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private ProgressBar progressBar;
+    private EditText email, password ;
+    private TextView load, or,rpass;
+    private View v, v2, v3;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        login=findViewById(R.id.BtnLogin);
+        email=findViewById(R.id.userName);
+        password=findViewById(R.id.password);
+        or= findViewById(R.id.or);
         button = findViewById(R.id.BtnSingUp);
+        v2=findViewById(R.id.line2);
+        v=findViewById(R.id.line1);
+        v3=findViewById(R.id.footer_line);
+        load=findViewById(R.id.loading);
+        rpass=findViewById(R.id.forgot_password);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,7 +124,17 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount signInAccount) {
         progressBar.setVisibility(View.VISIBLE);
+        load.setVisibility(View.VISIBLE);
         sigInButton.setVisibility(View.GONE);
+        button.setVisibility(View.GONE);
+        or.setVisibility(View.GONE);
+        email.setVisibility(View.GONE);
+        password.setVisibility(View.GONE);
+        login.setVisibility(View.GONE);
+        v.setVisibility(View.GONE);
+        v2.setVisibility(View.GONE);
+        v3.setVisibility(View.GONE);
+        rpass.setVisibility(View.GONE);
 
         AuthCredential credential = GoogleAuthProvider.getCredential(signInAccount.getIdToken(), null);
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -116,6 +143,16 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
                 progressBar.setVisibility(View.GONE);
                 sigInButton.setVisibility(View.VISIBLE);
+                button.setVisibility(View.VISIBLE);
+                or.setVisibility(View.VISIBLE);
+                email.setVisibility(View.VISIBLE);
+                password.setVisibility(View.VISIBLE);
+                login.setVisibility(View.VISIBLE);
+                v.setVisibility(View.VISIBLE);
+                v2.setVisibility(View.VISIBLE);
+                v3.setVisibility(View.VISIBLE);
+                load.setVisibility(View.GONE);
+                rpass.setVisibility(View.VISIBLE);
 
                 if (!task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), R.string.firebase_auth_error, Toast.LENGTH_SHORT).show();
