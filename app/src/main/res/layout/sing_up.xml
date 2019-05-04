@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_test">
+    android:background="@drawable/bg_test"
+    >
 
     <RelativeLayout
         android:id="@+id/reltxt"
@@ -27,7 +28,8 @@
             android:text="@string/register_from"
             android:textColor="@color/common_google_signin_btn_text_dark_default"
             android:textSize="30sp"
-            app:fontFamily="@font/sofiaregular" />
+            app:fontFamily="@font/sofiaregular"
+            />
     </RelativeLayout>
 
     <android.support.v7.widget.CardView
@@ -38,13 +40,16 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/login_form_details_light">
 
         <RelativeLayout
             android:id="@+id/RLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/form">
+            >
 
             <LinearLayout
                 android:id="@+id/linearLayout1"
@@ -52,7 +57,7 @@
                 android:layout_height="119dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="0dp"
-                android:background="@drawable/form"
+
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -60,19 +65,21 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:background="@color/blue"
+                    android:background="@null"
                     android:padding="10dp"
                     android:src="@drawable/img_register"
-                    android:tint="@color/login_from_details" />
+                    android:tint="@color/common_google_signin_btn_text_dark_default" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="20dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:textColor="@color/gray"
-                    android:textSize="14sp" />
+                    android:gravity="center"
+                    android:text="@string/register_from"
+                    android:textColor="@color/common_google_signin_btn_text_dark_default"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/sofiaregular" />
 
             </LinearLayout>
 
@@ -100,10 +107,10 @@
                     android:id="@+id/imgView_userIcon"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@color/blue"
+                    android:background="@null"
                     android:padding="8dp"
                     android:src="@drawable/img_user"
-                    android:tint="@color/login_from_details" />
+                    android:tint="@color/common_google_signin_btn_text_dark_default" />
 
                 <EditText
                     android:id="@+id/TxtName"
@@ -112,10 +119,11 @@
                     android:layout_alignBottom="@+id/imgView_userIcon"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/imgView_userIcon"
-                    android:background="@drawable/form"
+                    android:background="@drawable/et_bg"
                     android:hint="@string/name"
                     android:paddingLeft="20dp"
-                    android:paddingBottom="15dp"
+                    android:textColor="@color/common_google_signin_btn_text_dark_default"
+                    android:textColorHint="@color/login_from_details"
                     android:textSize="15sp" />
 
             </RelativeLayout>
@@ -133,10 +141,10 @@
                     android:id="@+id/imgView_userIcon1"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@color/blue"
+                    android:background="@null"
                     android:padding="8dp"
                     android:src="@drawable/img_user"
-                    android:tint="@color/login_from_details" />
+                    android:tint="@color/common_google_signin_btn_text_dark_default" />
 
                 <EditText
                     android:id="@+id/TxtLastname"
@@ -145,9 +153,11 @@
                     android:layout_alignBottom="@+id/imgView_userIcon1"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/imgView_userIcon1"
-                    android:background="@drawable/form"
+                    android:background="@drawable/et_bg"
                     android:hint="@string/lastname"
                     android:paddingLeft="20dp"
+                    android:textColor="@color/common_google_signin_btn_text_dark_default"
+                    android:textColorHint="@color/login_from_details"
                     android:textSize="15sp" />
 
             </RelativeLayout>
@@ -165,10 +175,10 @@
                     android:id="@+id/imgView_passwordIcon"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@color/blue"
+                    android:background="@null"
                     android:padding="8dp"
                     android:src="@drawable/img_authentication"
-                    android:tint="@color/login_from_details" />
+                    android:tint="@color/common_google_signin_btn_text_dark_default" />
 
                 <EditText
                     android:id="@+id/TxtPassword"
@@ -177,10 +187,12 @@
                     android:layout_alignBottom="@+id/imgView_passwordIcon"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/imgView_passwordIcon"
-                    android:background="@drawable/form"
+                    android:background="@drawable/et_bg"
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:paddingLeft="20dp"
+                    android:textColor="@color/common_google_signin_btn_text_dark_default"
+                    android:textColorHint="@color/login_from_details"
                     android:textSize="15sp" />
 
             </RelativeLayout>
@@ -198,10 +210,10 @@
                     android:id="@+id/imgView_repasswordIcon"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@color/blue"
+                    android:background="@null"
                     android:padding="8dp"
                     android:src="@drawable/img_authentication"
-                    android:tint="@color/login_from_details" />
+                    android:tint="@color/common_google_signin_btn_text_dark_default" />
 
                 <EditText
                     android:id="@+id/TxtPassword2"
@@ -210,9 +222,11 @@
                     android:layout_alignBottom="@+id/imgView_repasswordIcon"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/imgView_repasswordIcon"
-                    android:background="@drawable/form"
+                    android:background="@drawable/et_bg"
                     android:hint="@string/r_pass"
                     android:inputType="textPassword"
+                    android:textColor="@color/common_google_signin_btn_text_dark_default"
+                    android:textColorHint="@color/login_from_details"
                     android:paddingLeft="20dp"
                     android:textSize="15sp" />
 
@@ -231,10 +245,10 @@
                     android:id="@+id/imgView_emailIcon"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@color/blue"
+                    android:background="@null"
                     android:padding="8dp"
                     android:src="@drawable/img_email"
-                    android:tint="@color/login_from_details" />
+                    android:tint="@color/common_google_signin_btn_text_dark_default" />
 
                 <EditText
                     android:id="@+id/TxtEmail"
@@ -243,9 +257,11 @@
                     android:layout_alignBottom="@+id/imgView_emailIcon"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/imgView_emailIcon"
-                    android:background="@drawable/form"
+                    android:background="@drawable/et_bg"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
+                    android:textColor="@color/common_google_signin_btn_text_dark_default"
+                    android:textColorHint="@color/login_from_details"
                     android:paddingLeft="20dp"
                     android:textSize="15sp" />
 
@@ -259,10 +275,10 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="30dp"
-
+                android:paddingLeft="15dp"
                 android:fontFamily="sans-serif"
                 android:text="I agree to the Terms of Service"
-                android:textColor="@color/black" />
+                android:textColor="@color/login_from_details" />
 
             <Button
                 android:id="@+id/btn_signUp"
@@ -272,7 +288,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="30dp"
-                android:background="@color/blue"
+                android:background="@drawable/et_bg"
                 android:fontFamily="sans-serif-medium"
                 android:text="SIGN UP"
                 android:textColor="@color/login_from_details" />
@@ -292,7 +308,7 @@
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
                 android:layout_marginBottom="15dp"
-                android:background="@color/blue"
+                android:background="@drawable/et_bg"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
                 android:text="Already a member? Login Here"

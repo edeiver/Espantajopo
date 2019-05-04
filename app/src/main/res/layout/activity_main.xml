@@ -127,6 +127,7 @@
 
     <Button
         android:id="@+id/BtnSingUp"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="204dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
@@ -134,7 +135,6 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:background="@drawable/btn_bg"
         android:text="@string/dont_acc"
         android:textColor="@color/login_from_details"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
