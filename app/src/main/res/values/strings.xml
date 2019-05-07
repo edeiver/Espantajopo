@@ -17,4 +17,6 @@
     <string name="r_pass">Re-type the password</string>
     <string name="register_from">Register form</string>
     <string name="loading">Loading...</string>
+    <string name="empty">Ther are empty fields</string>
+    <string name="done">Save successfully</string>
 </resources>
