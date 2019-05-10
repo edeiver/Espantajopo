@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             }
         };
     progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
     }
     @Override
     protected void  onStart() {
@@ -194,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            Log.e("logged", "onComplete: " + task.isSuccessful());
+                            //Log.e("logged", "onComplete: " + task.isSuccessful());
                             if (task.isSuccessful()) {
 
                                 Intent intent = new Intent(MainActivity.this, UserDetails.class);
@@ -203,8 +204,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                             } else {
                                 Toast toast = Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG);
                                 toast.show();
-                                email.setError("*");
-                                password.setError("*");
+                                email.setError("");
+                                password.setError("");
 
                             }
 
