@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.constraint.solver.widgets.Guideline;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -179,6 +180,38 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         Intent intent = new Intent(this, SingUp.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    public void Login (View view){
+        String Email = email.getText().toString();
+        String Password = password.getText().toString();
+        if (Email.isEmpty() || Password.isEmpty()) {
+            Toast.makeText(MainActivity.this, R.string.empty, Toast.LENGTH_SHORT).show();
+            email.setError("");
+            password.setError("");
+        } else {
+            firebaseAuth.signInWithEmailAndPassword(Email, Password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            Log.e("logged", "onComplete: " + task.isSuccessful());
+                            if (task.isSuccessful()) {
+
+                                Intent intent = new Intent(MainActivity.this, UserDetails.class);
+                                startActivity(intent);
+
+                            } else {
+                                Toast toast = Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG);
+                                toast.show();
+                                email.setError("*");
+                                password.setError("*");
+
+                            }
+
+
+                        }
+                    });
+        }
     }
 
 }

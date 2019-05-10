@@ -276,6 +276,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="30dp"
                 android:paddingLeft="15dp"
+                android:visibility="gone"
                 android:fontFamily="sans-serif"
                 android:text="I agree to the Terms of Service"
                 android:textColor="@color/login_from_details" />
@@ -291,7 +292,8 @@
                 android:background="@drawable/et_bg"
                 android:fontFamily="sans-serif-medium"
                 android:text="SIGN UP"
-                android:textColor="@color/login_from_details" />
+                android:textColor="@color/login_from_details"
+                />
 
             <Button
                 android:id="@+id/BtnLoginB"

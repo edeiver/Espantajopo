@@ -56,7 +56,7 @@ public class User {
         Password = password;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    /*@RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,5 +69,5 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(Id);
-    }
+    }*/
 }

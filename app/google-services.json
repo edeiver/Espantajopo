@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "747654896346",
-    "firebase_url": "https://money-589f9.firebaseio.com",
-    "project_id": "money-589f9",
-    "storage_bucket": "money-589f9.appspot.com"
+    "project_number": "869487813192",
+    "firebase_url": "https://espantajopo-cd7bc.firebaseio.com",
+    "project_id": "espantajopo-cd7bc",
+    "storage_bucket": "espantajopo-cd7bc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:747654896346:android:53a66999093b76fc",
+        "mobilesdk_app_id": "1:869487813192:android:53a66999093b76fc",
         "android_client_info": {
           "package_name": "com.example.moneycontrol"
         }
       },
       "oauth_client": [
         {
-          "client_id": "747654896346-u6edr5rddglcotljj0m3jqs05mkrlo9m.apps.googleusercontent.com",
+          "client_id": "869487813192-ptakm49mjcishe7irrtsjhr73gn0u5t0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moneycontrol",
+            "certificate_hash": "a8d518c0a0c3c7658e3a98ba7ea645c153d94c67"
+          }
+        },
+        {
+          "client_id": "869487813192-2ii905hgg6loj0msmvlvmelnat3u4087.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCFmO4KXKpiQbVbUMEuwZs247G5HezSsu0"
+          "current_key": "AIzaSyBIF9VJyBtcNgAza6WwRQ52ags6BWFXep0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "747654896346-u6edr5rddglcotljj0m3jqs05mkrlo9m.apps.googleusercontent.com",
+              "client_id": "869487813192-2ii905hgg6loj0msmvlvmelnat3u4087.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
