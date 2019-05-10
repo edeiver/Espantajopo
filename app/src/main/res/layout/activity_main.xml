@@ -101,6 +101,7 @@
         android:layout_marginRight="8dp"
         android:background="@drawable/btn_bg"
         android:text="@string/login_now"
+        android:onClick="Login"
         android:textColor="@color/login_from_details"
         android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
