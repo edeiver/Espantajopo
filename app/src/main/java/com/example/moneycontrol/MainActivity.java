@@ -197,7 +197,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             //Log.e("logged", "onComplete: " + task.isSuccessful());
                             if (task.isSuccessful()) {
-
                                 Intent intent = new Intent(MainActivity.this, UserDetails.class);
                                 startActivity(intent);
 
