@@ -28,9 +28,10 @@ import java.util.Map;
 
 public class SingUp extends AppCompatActivity {
     private DatabaseReference RootReference, myDta;
+    private FirebaseUser firebaseUser;
     private FirebaseDatabase firebaseDatabase;
     private Button BtnSingup;
-    private EditText Name, Lastname,Email, Password;
+    private EditText Name, Lastname,Email, Password, Password2;
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     FirebaseAuth firebaseAuth;
@@ -41,6 +42,7 @@ public class SingUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sing_up);
         button=findViewById(R.id.BtnLoginB);
+        firebaseAuth =FirebaseAuth.getInstance();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,27 +57,34 @@ public class SingUp extends AppCompatActivity {
         Lastname=findViewById(R.id.TxtLastname);
         Email=findViewById(R.id.TxtEmail);
         Password=findViewById(R.id.TxtPassword);
+        Password2=findViewById(R.id.TxtPassword2);
         BtnSingup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (Name.getText().length() == 0 || Lastname.getText().length() == 0 || Email.getText().length() == 0 || Password.getText().length() == 0) {
                     Toast.makeText(SingUp.this, R.string.empty, Toast.LENGTH_LONG).show();
-                } else {
-                            String NameOn, LastNameOn, EmailOn, PasswordOn;
-                            NameOn = Name.getText().toString();
-                            LastNameOn = Lastname.getText().toString();
-                            EmailOn = Email.getText().toString();
-                            PasswordOn = Password.getText().toString();
-                            LoadFirebaseData(NameOn, LastNameOn, EmailOn, PasswordOn);
-                    //SingUp();
-                            Toast.makeText(SingUp.this, R.string.done, Toast.LENGTH_LONG).show();
+                } else if(Password.getText().toString().equals(Password2.getText().toString())) {
 
-                    }
+                    String NameOn, LastNameOn, EmailOn, PasswordOn;
+                    NameOn = Name.getText().toString();
+                    LastNameOn = Lastname.getText().toString();
+                    EmailOn = Email.getText().toString();
+                    PasswordOn = Password.getText().toString();
+                    LoadFirebaseData( NameOn, LastNameOn, EmailOn, PasswordOn);
+                    SingUp(EmailOn, PasswordOn);
+                    Toast.makeText(SingUp.this, R.string.done, Toast.LENGTH_LONG).show();
+                }else {
+                    Password.setError("Not Matching");
+                    Password2.setError("Not Matching");
+
+                }
             }
         });
     }
     private void LoadFirebaseData(String nameOn, String lastNameOn, String emailOn, String passwordOn) {
         Map<String, Object> UserData = new HashMap<>();
+
+
         UserData.put("Name", nameOn);
         UserData.put("LastName", lastNameOn);
         UserData.put("Email", emailOn);
@@ -113,9 +122,7 @@ public class SingUp extends AppCompatActivity {
             }
         });
     }
-    public void SingUp() {
-        String EmailOn = Email.getText().toString();
-        String PasswordOn = Password.getText().toString();
+    public void SingUp(String EmailOn,String PasswordOn) {
         firebaseAuth.createUserWithEmailAndPassword(EmailOn, PasswordOn)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
