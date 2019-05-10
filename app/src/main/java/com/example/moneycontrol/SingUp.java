@@ -83,8 +83,6 @@ public class SingUp extends AppCompatActivity {
     }
     private void LoadFirebaseData(String nameOn, String lastNameOn, String emailOn, String passwordOn) {
         Map<String, Object> UserData = new HashMap<>();
-
-
         UserData.put("Name", nameOn);
         UserData.put("LastName", lastNameOn);
         UserData.put("Email", emailOn);
