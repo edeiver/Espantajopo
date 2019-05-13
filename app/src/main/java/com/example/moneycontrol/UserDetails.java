@@ -41,17 +41,18 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        /*drawer = findViewById(R.id.drawer_layout);
+/*
+       drawer = findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-    }*/
 
+*/
         photoImageView = (ImageView) findViewById(R.id.photoImageView);
         nameTextView = (TextView) findViewById(R.id.nameTextView);
         emailTextView = (TextView) findViewById(R.id.emailTextView);
@@ -148,7 +149,7 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
             firebaseAuth.removeAuthStateListener(firebaseAuthListener);
         }
     }
-   /* @Override
+  /*  @Override
     public void onBackPressed(){
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
@@ -157,6 +158,5 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
         }
 
     }
-
-  */
+*/
 }
