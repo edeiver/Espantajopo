@@ -3,11 +3,16 @@ package com.example.moneycontrol;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 
 import com.bumptech.glide.Glide;
@@ -28,7 +33,7 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
     private TextView nameTextView;
     private TextView emailTextView;
     private TextView idTextView;
-
+    private DrawerLayout drawer;
     private GoogleApiClient googleApiClient;
 
     private FirebaseAuth firebaseAuth;
@@ -38,7 +43,12 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user);
-
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        drawer=findViewById(R.id.drawe_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
         photoImageView = (ImageView) findViewById(R.id.photoImageView);
         nameTextView = (TextView) findViewById(R.id.nameTextView);
         emailTextView = (TextView) findViewById(R.id.emailTextView);
@@ -65,6 +75,9 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
                 }
             }
         };
+    }
+
+    private void setSupportActionBar(Toolbar toolbar) {
     }
 
     private void setUserData(FirebaseUser user) {
@@ -129,5 +142,14 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
         if (firebaseAuthListener != null) {
             firebaseAuth.removeAuthStateListener(firebaseAuthListener);
         }
+    }
+    @Override
+    public void onBackPressed(){
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else {
+            super.onBackPressed();
+        }
+
     }
 }
