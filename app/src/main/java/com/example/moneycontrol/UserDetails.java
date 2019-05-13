@@ -42,8 +42,9 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user);
+        setContentView(R.layout.drawe_user);
         Toolbar toolbar = findViewById(R.id.toolbar);
+       // setSupportActionBar(toolbar);
         setSupportActionBar(toolbar);
         drawer=findViewById(R.id.drawe_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -77,8 +78,10 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
         };
     }
 
-    private void setSupportActionBar(Toolbar toolbar) {
-    }
+
+
+   /* private void setSupportActionBar(Toolbar toolbar) {
+    }*/
 
     private void setUserData(FirebaseUser user) {
         nameTextView.setText(user.getDisplayName());
