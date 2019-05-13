@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -31,13 +32,13 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     private GoogleApiClient  googleApiClient;
     private SignInButton sigInButton;
-    private Button button, login;
+    private Button button, login, rpass;
     public static final int  SIGN_IN_CODE = 777;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private ProgressBar progressBar;
     private EditText email, password ;
-    private TextView load, or,rpass;
+    private TextView load, or;
     private View v, v2, v3;
 
 
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         login=findViewById(R.id.BtnLogin);
         email=findViewById(R.id.userName);
@@ -56,6 +58,15 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         v3=findViewById(R.id.footer_line);
         load=findViewById(R.id.loading);
         rpass=findViewById(R.id.forgot_password);
+        rpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SideNav.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
