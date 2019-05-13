@@ -42,9 +42,9 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+ /*       Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-/*
+
        drawer = findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
