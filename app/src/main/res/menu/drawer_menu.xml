@@ -15,10 +15,10 @@
     <item android:title="Acount">
         <menu>
             <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_logout"
-                android:title="Logout"
-                android:onClick="logOut"/>
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/ic_person"
+                android:title="Profile"
+                />
         </menu>
     </item>
 </menu>

@@ -28,6 +28,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.tapadoo.alerter.Alerter;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     private GoogleApiClient  googleApiClient;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 Intent intent = new Intent(MainActivity.this, SideNav.class);
                 //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+
             }
         });
 
@@ -199,10 +201,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     public void Login (View view){
         String Email = email.getText().toString();
         String Password = password.getText().toString();
-        if (Email.isEmpty() || Password.isEmpty()) {
-            Toast.makeText(MainActivity.this, R.string.empty, Toast.LENGTH_SHORT).show();
-            email.setError("");
-            password.setError("");
+        if (Email.isEmpty()|| Password.isEmpty()) {
+            //Toast.makeText(MainActivity.this, R.string.empty, Toast.LENGTH_SHORT).show();
+            email.setError("Empty field"/*,getResources().getDrawable(R.drawable.ic_logout)*/);
+            password.setError("Empty field"/*,getResources().getDrawable(R.drawable.ic_logout)*/);
+            //showAlerter(This);
+
         } else {
             firebaseAuth.signInWithEmailAndPassword(Email, Password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -228,5 +232,35 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     });
         }
     }
+    public void showAlerter(View view) {
+            Alerter.create(this)
+                    .setTitle("Alert Title")
+                    .setText("Alert Text")
+                   // .setIcon(R.drawable.ic_android_black_24dp)
+                    .setBackgroundColorRes(R.color.blue_l)
+                    //.setDuration(5000)
+                    .enableSwipeToDismiss() //seems to not work well with OnClickListener
+                    .enableProgress(true)
+                    .setProgressColorRes(R.color.gray)
+                    .setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //do something when Alerter message was clicked
+                        }
+                    })/*
+                    .setOnShowListener(new OnShowAlertListener() {
+                        @Override
+                        public void onShow() {
+                            //do something when Alerter message shows
+                        }
+                    })
+                    .setOnHideListener(new OnHideAlertListener() {
+                        @Override
+                        public void onHide() {
+                            //do something when Alerter message hides
+                        }
+                    })*/
+                    .show();
+        }
 
 }

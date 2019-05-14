@@ -23,5 +23,6 @@
     <string name="error">Not valid user.</string>
     <string name="navigation_drawer_open">Open nav drawer</string>
     <string name="navigation_drawer_close">Close nav drawer</string>
+    <string name="fragment">Test Fragment</string>
 
 </resources>

@@ -20,6 +20,7 @@
         <activity android:name=".SingUp"></activity>
         <activity android:name=".SideNav"></activity>
 
+
     </application>
 
 </manifest>
