@@ -1,17 +1,18 @@
 package com.example.moneycontrol;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.tapadoo.alerter.Alerter;
 
 
 public class TestFragment extends Fragment {
@@ -25,6 +26,7 @@ public class TestFragment extends Fragment {
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Alerter.create(getActivity()).setTitle("Test").setText("Este es in test").setBackgroundColorRes(R.color.blue_d).setIcon(R.drawable.ic_person).show();
                 Toast.makeText(getActivity(),"uh", Toast.LENGTH_LONG).show();
             }
         });
