@@ -1,5 +1,6 @@
 package com.example.moneycontrol;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.constraint.solver.widgets.Guideline;
@@ -28,20 +29,19 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.tapadoo.alerter.Alerter;
+
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
-    private GoogleApiClient  googleApiClient;
+    private GoogleApiClient googleApiClient;
     private SignInButton sigInButton;
     private Button button, login, rpass;
-    public static final int  SIGN_IN_CODE = 777;
+    public static final int SIGN_IN_CODE = 777;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private ProgressBar progressBar;
-    private EditText email, password ;
+    private EditText email, password;
     private TextView load, or;
     private View v, v2, v3;
-
 
 
     @Override
@@ -49,16 +49,16 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        login=findViewById(R.id.BtnLogin);
-        email=findViewById(R.id.userName);
-        password=findViewById(R.id.password);
-        or= findViewById(R.id.or);
+        login = findViewById(R.id.BtnLogin);
+        email = findViewById(R.id.userName);
+        password = findViewById(R.id.password);
+        or = findViewById(R.id.or);
         button = findViewById(R.id.BtnSingUp);
-        v2=findViewById(R.id.line2);
-        v=findViewById(R.id.line1);
-        v3=findViewById(R.id.footer_line);
-        load=findViewById(R.id.loading);
-        rpass=findViewById(R.id.forgot_password);
+        v2 = findViewById(R.id.line2);
+        v = findViewById(R.id.line1);
+        v3 = findViewById(R.id.footer_line);
+        load = findViewById(R.id.loading);
+        rpass = findViewById(R.id.forgot_password);
         rpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(MainActivity.this, SingUp.class);
                 //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -84,9 +85,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 .build();
         googleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,googleSignInOptions)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
                 .build();
-        sigInButton =(SignInButton) findViewById(R.id.signInButton);
+        sigInButton = (SignInButton) findViewById(R.id.signInButton);
         sigInButton.setSize(SignInButton.SIZE_WIDE);
         sigInButton.setColorScheme(SignInButton.COLOR_LIGHT);
         sigInButton.setOnClickListener(new View.OnClickListener() {
@@ -96,21 +97,22 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 startActivityForResult(IT, SIGN_IN_CODE);
             }
         });
-        firebaseAuth =FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user!=null){
+                if (user != null) {
                     goUserDetail();
                 }
             }
         };
-    progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
     }
+
     @Override
-    protected void  onStart() {
+    protected void onStart() {
         super.onStart();
         firebaseAuth.addAuthStateListener(firebaseAuthListener);
     }
@@ -119,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -177,12 +180,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     private void goUserDetail() {
-        //Intent intent2 = new Intent(this, SideNav.class);
+
         Intent intent = new Intent(this, UserDetails.class);
-       // intent.putExtras(intent2, UserDetails.class);
-       // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -192,16 +195,17 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             //Toast.makeText(getApplicationContext(), R.string.close_s, Toast.LENGTH_LONG).show();
         }
     }
+
     private void goSingup() {
         Intent intent = new Intent(this, SingUp.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
-    public void Login (View view){
+    public void Login(View view) {
         String Email = email.getText().toString();
         String Password = password.getText().toString();
-        if (Email.isEmpty()|| Password.isEmpty()) {
+        if (Email.isEmpty() || Password.isEmpty()) {
             //Toast.makeText(MainActivity.this, R.string.empty, Toast.LENGTH_SHORT).show();
             email.setError("Empty field"/*,getResources().getDrawable(R.drawable.ic_logout)*/);
             password.setError("Empty field"/*,getResources().getDrawable(R.drawable.ic_logout)*/);
@@ -215,8 +219,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                             //Log.e("logged", "onComplete: " + task.isSuccessful());
                             if (task.isSuccessful()) {
                                 Intent intent = new Intent(MainActivity.this, UserDetails.class);
-                               // Intent intent2 = new Intent(getApplicationContext(), UserDetails.class);
-                             //  intent.putExtras(intent2);
+                                // Intent intent2 = new Intent(getApplicationContext(), UserDetails.class);
+                                //  intent.putExtras(intent2);
                                 startActivity(intent);
 
                             } else {
@@ -232,35 +236,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     });
         }
     }
-    public void showAlerter(View view) {
-            Alerter.create(this)
-                    .setTitle("Alert Title")
-                    .setText("Alert Text")
-                   // .setIcon(R.drawable.ic_android_black_24dp)
-                    .setBackgroundColorRes(R.color.blue_l)
-                    //.setDuration(5000)
-                    .enableSwipeToDismiss() //seems to not work well with OnClickListener
-                    .enableProgress(true)
-                    .setProgressColorRes(R.color.gray)
-                    .setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            //do something when Alerter message was clicked
-                        }
-                    })/*
-                    .setOnShowListener(new OnShowAlertListener() {
-                        @Override
-                        public void onShow() {
-                            //do something when Alerter message shows
-                        }
-                    })
-                    .setOnHideListener(new OnHideAlertListener() {
-                        @Override
-                        public void onHide() {
-                            //do something when Alerter message hides
-                        }
-                    })*/
-                    .show();
-        }
+
 
 }

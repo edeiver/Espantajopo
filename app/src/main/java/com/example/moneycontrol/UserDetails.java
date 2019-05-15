@@ -35,6 +35,7 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
     private GoogleApiClient googleApiClient;
 
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
     @Override
@@ -51,7 +52,7 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
+cu
 */
         photoImageView = (ImageView) findViewById(R.id.photoImageView);
         nameTextView = (TextView) findViewById(R.id.nameTextView);
@@ -96,7 +97,7 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
     @Override
     protected void onStart() {
         super.onStart();
-
+         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseAuth.addAuthStateListener(firebaseAuthListener);
     }
 
@@ -135,12 +136,10 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
             }
         });
     }
-
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
-
     @Override
     protected void onStop() {
         super.onStop();
@@ -149,14 +148,5 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
             firebaseAuth.removeAuthStateListener(firebaseAuthListener);
         }
     }
-  /*  @Override
-    public void onBackPressed(){
-        if (drawer.isDrawerOpen(GravityCompat.START)){
-            drawer.closeDrawer(GravityCompat.START);
-        }else {
-            super.onBackPressed();
-        }
 
-    }
-*/
 }
