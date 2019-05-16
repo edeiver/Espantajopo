@@ -29,6 +29,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.tapadoo.alerter.Alerter;
 
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
@@ -114,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     @Override
     protected void onStart() {
         super.onStart();
+
         firebaseAuth.addAuthStateListener(firebaseAuthListener);
     }
 
@@ -136,12 +138,17 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         if (result.isSuccess()) {
             firebaseAuthWithGoogle(result.getSignInAccount());
         } else {
+            Alerter.create(MainActivity.this)
+                    .setTitle(R.string.log_in_error)
+                    .setBackgroundColorRes(R.color.colorAccent)
+                    .setText(R.string.error)
+                    .show();
             Toast.makeText(this, R.string.log_in_error, Toast.LENGTH_SHORT).show();
         }
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount signInAccount) {
-        progressBar.setVisibility(View.VISIBLE);
+       /* progressBar.setVisibility(View.VISIBLE);
         load.setVisibility(View.VISIBLE);
         sigInButton.setVisibility(View.GONE);
         button.setVisibility(View.GONE);
@@ -152,14 +159,23 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         v.setVisibility(View.GONE);
         v2.setVisibility(View.GONE);
         v3.setVisibility(View.GONE);
-        rpass.setVisibility(View.GONE);
+        rpass.setVisibility(View.GONE);*/
+
+        Alerter.create(MainActivity.this)
+                .setTitle(R.string.loading)
+                .setBackgroundColorRes(R.color.purble_black)
+                .setText(R.string.welcome)
+                .enableProgress(true)
+                .setProgressColorRes(R.color.white)
+                .enableVibration(true)
+                .show();
 
         AuthCredential credential = GoogleAuthProvider.getCredential(signInAccount.getIdToken(), null);
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                progressBar.setVisibility(View.GONE);
+                /*progressBar.setVisibility(View.GONE);
                 sigInButton.setVisibility(View.VISIBLE);
                 button.setVisibility(View.VISIBLE);
                 or.setVisibility(View.VISIBLE);
@@ -170,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 v2.setVisibility(View.VISIBLE);
                 v3.setVisibility(View.VISIBLE);
                 load.setVisibility(View.GONE);
-                rpass.setVisibility(View.VISIBLE);
+                rpass.setVisibility(View.VISIBLE);*/
 
                 if (!task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), R.string.firebase_auth_error, Toast.LENGTH_SHORT).show();
@@ -203,9 +219,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     public void Login(View view) {
-        String Email = email.getText().toString();
+        final String Email = email.getText().toString();
         String Password = password.getText().toString();
         if (Email.isEmpty() || Password.isEmpty()) {
+            Alerter.create(this).setText(R.string.empty)
+                    .setTitle("Error").setBackgroundColorRes(R.color.colorAccent)
+                    .setIcon(R.drawable.ic_format_list)
+                    .enableVibration(true)
+                    .setDismissable(true).show();
             //Toast.makeText(MainActivity.this, R.string.empty, Toast.LENGTH_SHORT).show();
             email.setError("Empty field"/*,getResources().getDrawable(R.drawable.ic_logout)*/);
             password.setError("Empty field"/*,getResources().getDrawable(R.drawable.ic_logout)*/);
@@ -217,17 +238,22 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             //Log.e("logged", "onComplete: " + task.isSuccessful());
+
                             if (task.isSuccessful()) {
-                                Intent intent = new Intent(MainActivity.this, UserDetails.class);
+                                /**/Intent intent = new Intent(MainActivity.this, UserDetails.class);
                                 // Intent intent2 = new Intent(getApplicationContext(), UserDetails.class);
                                 //  intent.putExtras(intent2);
                                 startActivity(intent);
-
                             } else {
                                 Toast toast = Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG);
                                 toast.show();
-                                email.setError("");
-                                password.setError("");
+                                Alerter.create(MainActivity.this)
+                                        .setTitle(R.string.log_in_error)
+                                        .setBackgroundColorRes(R.color.colorAccent)
+                                        .setText(R.string.error)
+                                        .enableVibration(true)
+                                        .setDismissable(true)
+                                        .show();
 
                             }
 

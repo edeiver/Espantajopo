@@ -24,6 +24,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.tapadoo.alerter.Alerter;
 
 public class UserDetails extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
@@ -75,6 +76,14 @@ cu
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     setUserData(user);
+                    Alerter.create(UserDetails.this)
+                            .setTitle(R.string.welcome)
+                            .setBackgroundColorRes(R.color.purble_black)
+                            .setText(user.getEmail())
+                            .enableProgress(true)
+                            .setProgressColorRes(R.color.white)
+                            .enableVibration(true)
+                            .show();
                 } else {
                     goLogInScreen();
                 }
