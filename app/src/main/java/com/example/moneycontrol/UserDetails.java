@@ -43,18 +43,6 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user);
-
- /*       Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-       drawer = findViewById(R.id.drawer_layout);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-cu
-*/
         photoImageView = (ImageView) findViewById(R.id.photoImageView);
         nameTextView = (TextView) findViewById(R.id.nameTextView);
         emailTextView = (TextView) findViewById(R.id.emailTextView);
@@ -79,8 +67,8 @@ cu
                     Alerter.create(UserDetails.this)
                             .setTitle(R.string.welcome)
                             .setBackgroundColorRes(R.color.purble_black)
-                            .setText(user.getEmail())
-                            .enableProgress(true)
+                            .setText(getText(R.string.welcome)+" "+user.getEmail())
+                            .setIcon(R.drawable.ic_person)
                             .setProgressColorRes(R.color.white)
                             .enableVibration(true)
                             .show();
@@ -90,11 +78,6 @@ cu
             }
         };
     }
-
-
-
-   /* private void setSupportActionBar(Toolbar toolbar) {
-    }*/
 
     private void setUserData(FirebaseUser user) {
         nameTextView.setText(user.getDisplayName());

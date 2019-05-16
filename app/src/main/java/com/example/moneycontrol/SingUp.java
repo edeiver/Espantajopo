@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tapadoo.alerter.Alerter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,6 +63,11 @@ public class SingUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (Name.getText().length() == 0 || Lastname.getText().length() == 0 || Email.getText().length() == 0 || Password.getText().length() == 0) {
+                    Alerter.create(SingUp.this).setText(R.string.empty)
+                            .setTitle("Error").setBackgroundColorRes(R.color.colorAccent)
+                            .setIcon(R.drawable.ic_format_list)
+                            .enableVibration(true)
+                            .setDismissable(true).show();
                     Toast.makeText(SingUp.this, R.string.empty, Toast.LENGTH_LONG).show();
                 } else if(Password.getText().toString().equals(Password2.getText().toString())) {
 
@@ -74,8 +80,13 @@ public class SingUp extends AppCompatActivity {
                     SingUp(EmailOn, PasswordOn);
                     Toast.makeText(SingUp.this, R.string.done, Toast.LENGTH_LONG).show();
                 }else {
-                    Password.setError("Not Matching");
-                    Password2.setError("Not Matching");
+                    Alerter.create(SingUp.this).setText(R.string.not_match)
+                            .setTitle("Error").setBackgroundColorRes(R.color.colorAccent)
+                            .setIcon(R.drawable.ic_no_encryption)
+                            .enableVibration(true)
+                            .setDismissable(true).show();
+                    Password.setError(getText(R.string.not_match));
+                    Password2.setError(getText(R.string.not_match));
 
                 }
             }

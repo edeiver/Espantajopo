@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         login = findViewById(R.id.BtnLogin);
         email = findViewById(R.id.userName);
@@ -142,13 +141,15 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     .setTitle(R.string.log_in_error)
                     .setBackgroundColorRes(R.color.colorAccent)
                     .setText(R.string.error)
+                    .setIcon(R.drawable.ic_person_outline)
                     .show();
             Toast.makeText(this, R.string.log_in_error, Toast.LENGTH_SHORT).show();
         }
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount signInAccount) {
-       /* progressBar.setVisibility(View.VISIBLE);
+       /*
+        progressBar.setVisibility(View.VISIBLE);
         load.setVisibility(View.VISIBLE);
         sigInButton.setVisibility(View.GONE);
         button.setVisibility(View.GONE);
@@ -159,13 +160,15 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         v.setVisibility(View.GONE);
         v2.setVisibility(View.GONE);
         v3.setVisibility(View.GONE);
-        rpass.setVisibility(View.GONE);*/
+        rpass.setVisibility(View.GONE);
+        */
 
         Alerter.create(MainActivity.this)
                 .setTitle(R.string.loading)
-                .setBackgroundColorRes(R.color.purble_black)
+                .setBackgroundColorRes(R.color.colorPrimary)
                 .setText(R.string.welcome)
                 .enableProgress(true)
+                .setIcon(R.drawable.progressb)
                 .setProgressColorRes(R.color.white)
                 .enableVibration(true)
                 .show();
@@ -175,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                /*progressBar.setVisibility(View.GONE);
+                /* progressBar.setVisibility(View.GONE);
                 sigInButton.setVisibility(View.VISIBLE);
                 button.setVisibility(View.VISIBLE);
                 or.setVisibility(View.VISIBLE);
@@ -186,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 v2.setVisibility(View.VISIBLE);
                 v3.setVisibility(View.VISIBLE);
                 load.setVisibility(View.GONE);
-                rpass.setVisibility(View.VISIBLE);*/
+                rpass.setVisibility(View.VISIBLE); */
 
                 if (!task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), R.string.firebase_auth_error, Toast.LENGTH_SHORT).show();
@@ -251,6 +254,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                                         .setTitle(R.string.log_in_error)
                                         .setBackgroundColorRes(R.color.colorAccent)
                                         .setText(R.string.error)
+                                        .setIcon(R.drawable.ic_person_outline)
                                         .enableVibration(true)
                                         .setDismissable(true)
                                         .show();
