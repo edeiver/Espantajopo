@@ -1,14 +1,17 @@
 package com.example.moneycontrol;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,12 +21,17 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class UserDetails extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
@@ -33,10 +41,13 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
     private TextView idTextView;
     private DrawerLayout drawer;
     private GoogleApiClient googleApiClient;
+    private Button upload; // upload image
 
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
+    private StorageReference myStorage;
+    private static final int GALERY_INTENT = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +65,21 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
         toggle.syncState();
 cu
 */
+        myStorage = FirebaseStorage.getInstance().getReference();
         photoImageView = (ImageView) findViewById(R.id.photoImageView);
         nameTextView = (TextView) findViewById(R.id.nameTextView);
         emailTextView = (TextView) findViewById(R.id.emailTextView);
         idTextView = (TextView) findViewById(R.id.idTextView);
+        upload = (Button) findViewById(R.id.addimage);
+
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {//
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");// * es para que tome todas las extenciones
+                startActivityForResult(intent,GALERY_INTENT);
+            }
+        });
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -82,9 +104,21 @@ cu
         };
     }
 
-
-
-   /* private void setSupportActionBar(Toolbar toolbar) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode== GALERY_INTENT && resultCode == RESULT_OK){
+            Uri uri=data.getData();
+            StorageReference filepath = myStorage.child("fotos").child(uri.getLastPathSegment());
+            filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(UserDetails.this,"se subio exitosamente",Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+    /* private void setSupportActionBar(Toolbar toolbar) {
     }*/
 
     private void setUserData(FirebaseUser user) {
