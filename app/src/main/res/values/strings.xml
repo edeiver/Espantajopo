@@ -25,5 +25,6 @@
     <string name="navigation_drawer_close">Close nav drawer</string>
     <string name="fragment">Test Fragment</string>
     <string name="not_match">Not Matching!</string>
+    <string name="upload_img">Upload image</string>
 
 </resources>
