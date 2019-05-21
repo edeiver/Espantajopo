@@ -35,6 +35,7 @@ public class SingUp extends AppCompatActivity {
     private EditText Name, Lastname,Email, Password, Password2;
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
+    private String currentUserId;
     FirebaseAuth firebaseAuth;
     private ArrayList<User> userArrayList = new ArrayList<>();
     private Button button;
@@ -53,7 +54,10 @@ public class SingUp extends AppCompatActivity {
             }
         });
         BtnSingup = findViewById(R.id.btn_signUp);
+
         RootReference = FirebaseDatabase.getInstance().getReference();
+
+
         Name=findViewById(R.id.TxtName);
         Lastname=findViewById(R.id.TxtLastname);
         Email=findViewById(R.id.TxtEmail);
@@ -70,13 +74,15 @@ public class SingUp extends AppCompatActivity {
                             .setDismissable(true).show();
                     Toast.makeText(SingUp.this, R.string.empty, Toast.LENGTH_LONG).show();
                 } else if(Password.getText().toString().equals(Password2.getText().toString())) {
-
-                    String NameOn, LastNameOn, EmailOn, PasswordOn;
+                    firebaseAuth.getCurrentUser();
+                    currentUserId=firebaseAuth.getUid();
+                    String IdOn, NameOn, LastNameOn, EmailOn, PasswordOn;
+                    IdOn=currentUserId;
                     NameOn = Name.getText().toString();
                     LastNameOn = Lastname.getText().toString();
                     EmailOn = Email.getText().toString();
                     PasswordOn = Password.getText().toString();
-                    LoadFirebaseData( NameOn, LastNameOn, EmailOn, PasswordOn);
+                    LoadFirebaseData(IdOn, NameOn, LastNameOn, EmailOn, PasswordOn);
                     SingUp(EmailOn, PasswordOn);
                     Toast.makeText(SingUp.this, R.string.done, Toast.LENGTH_LONG).show();
                 }else {
@@ -92,9 +98,10 @@ public class SingUp extends AppCompatActivity {
             }
         });
     }
-    private void LoadFirebaseData(String nameOn, String lastNameOn, String emailOn, String passwordOn) {
+    private void LoadFirebaseData(String idOn, String nameOn, String lastNameOn, String emailOn, String passwordOn) {
         Map<String, Object> UserData = new HashMap<>();
-        UserData.put("Name", nameOn);
+        UserData.put("Id",idOn);
+        UserData.put("Name",nameOn);
         UserData.put("LastName", lastNameOn);
         UserData.put("Email", emailOn);
         UserData.put("Password", passwordOn);
@@ -109,6 +116,7 @@ public class SingUp extends AppCompatActivity {
                     userArrayList.clear();
                     for(final DataSnapshot ds: dataSnapshot.getChildren()){
                         User user= ds.getValue(User.class);
+                        String id= user.getId();
                         String name = user.getName();
                         String lastname = user.getLastname();
                         String email = user.getEmail();
@@ -142,6 +150,7 @@ public class SingUp extends AppCompatActivity {
                            /* Intent intent = new Intent(SingUp.this, UserDetails.class);
                             startActivity(intent);*/
                             FirebaseUser user = firebaseAuth.getCurrentUser();
+
                         } else {
                             Toast toast = Toast.makeText(SingUp.this, R.string.error, Toast.LENGTH_LONG);
                             toast.show();

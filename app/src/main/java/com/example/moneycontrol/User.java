@@ -63,19 +63,4 @@ public class User {
     public void setPassword(String password) {
         Password = password;
     }
-
-    /*@RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return Objects.equals(Id, user.Id);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    @Override
-    public int hashCode() {
-        return Objects.hash(Id);
-    }*/
 }
