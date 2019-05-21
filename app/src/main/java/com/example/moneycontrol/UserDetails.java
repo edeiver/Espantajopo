@@ -97,6 +97,7 @@ cu
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
+                    setUserData(user);
                     Alerter.create(UserDetails.this)
                             .setTitle(R.string.welcome)
                             .setText(getText(R.string.welcome)+" "+user.getEmail())
@@ -105,7 +106,6 @@ cu
                             .enableVibration(true)
                             .setDismissable(true)
                             .show();
-                    setUserData(user);
                 } else {
                     goLogInScreen();
                 }
@@ -122,7 +122,16 @@ cu
             filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(UserDetails.this,"se subio exitosamente",Toast.LENGTH_SHORT).show();
+                    Alerter.create(UserDetails.this)
+                            .setTitle(R.string.upload_img)
+                            .setText(R.string.upload_img_s)
+                            .setIcon(R.drawable.ic_image)
+                            .setBackgroundColorRes(R.color.purble_black)
+                            .enableVibration(true)
+                            .setDismissable(true)
+                            .enableProgress(true)
+                            .show();
+                    /*Toast.makeText(UserDetails.this,"se subio exitosamente",Toast.LENGTH_SHORT).show();*/
                 }
             });
         }
@@ -146,7 +155,7 @@ cu
 
     private void goLogInScreen() {
         Intent intent = new Intent(this, MainActivity.class);
-        // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
@@ -186,7 +195,6 @@ cu
     @Override
     protected void onStop() {
         super.onStop();
-
         if (firebaseAuthListener != null) {
             firebaseAuth.removeAuthStateListener(firebaseAuthListener);
         }
