@@ -45,19 +45,9 @@ public class SingUp extends AppCompatActivity {
         setContentView(R.layout.sing_up);
         button=findViewById(R.id.BtnLoginB);
         firebaseAuth =FirebaseAuth.getInstance();
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SingUp.this, MainActivity.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
-        BtnSingup = findViewById(R.id.btn_signUp);
-
         RootReference = FirebaseDatabase.getInstance().getReference();
-
-
+        currentUserId=RootReference.push().getKey();
+        BtnSingup = findViewById(R.id.btn_signUp);
         Name=findViewById(R.id.TxtName);
         Lastname=findViewById(R.id.TxtLastname);
         Email=findViewById(R.id.TxtEmail);
@@ -74,8 +64,6 @@ public class SingUp extends AppCompatActivity {
                             .setDismissable(true).show();
                     Toast.makeText(SingUp.this, R.string.empty, Toast.LENGTH_LONG).show();
                 } else if(Password.getText().toString().equals(Password2.getText().toString())) {
-                    firebaseAuth.getCurrentUser();
-                    currentUserId=firebaseAuth.getUid();
                     String IdOn, NameOn, LastNameOn, EmailOn, PasswordOn;
                     IdOn=currentUserId;
                     NameOn = Name.getText().toString();
@@ -93,8 +81,15 @@ public class SingUp extends AppCompatActivity {
                             .setDismissable(true).show();
                     Password.setError(getText(R.string.not_match));
                     Password2.setError(getText(R.string.not_match));
-
                 }
+            }
+        });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SingUp.this, MainActivity.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
     }

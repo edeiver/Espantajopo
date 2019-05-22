@@ -22,8 +22,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.zip.Inflater;
-
 public class ArticlesFragments extends Fragment {
     private View ArticlesView;
     private RecyclerView myArticlesList;
@@ -66,7 +64,7 @@ public class ArticlesFragments extends Fragment {
                         String ArticleDesc= dataSnapshot.child("description").getValue().toString();
                         String ArticlePrice= dataSnapshot.child("price").getValue().toString();
                         holder.articleName.setText(ArticleName);
-                        holder.articleDescrtion.setText(ArticleDesc);
+                        holder.articleDescription.setText(ArticleDesc);
                         holder.articlePrice.setText(ArticlePrice);
                         Glide.with(getContext()).load(ArticleImage).placeholder(R.drawable.ic_item).into(holder.imgArticle);
 
@@ -75,7 +73,7 @@ public class ArticlesFragments extends Fragment {
                         String ArticleDesc= dataSnapshot.child("description").getValue().toString();
                         String ArticlePrice= dataSnapshot.child("price").getValue().toString();
                         holder.articleName.setText(ArticleName);
-                        holder.articleDescrtion.setText(ArticleDesc);
+                        holder.articleDescription.setText(ArticleDesc);
                         holder.articlePrice.setText(ArticlePrice);
 
                     }
@@ -102,13 +100,13 @@ public class ArticlesFragments extends Fragment {
         adapter.startListening();
     }
     public static class ArticlesViewHolder extends RecyclerView.ViewHolder{
-        TextView articleName,articleDescrtion, articlePrice;
+        TextView articleName, articleDescription, articlePrice;
         ImageView imgArticle;
 
         public ArticlesViewHolder(@NonNull View itemView) {
             super(itemView);
             articleName=itemView.findViewById(R.id.article_name);
-            articleDescrtion=itemView.findViewById(R.id.article_desc);
+            articleDescription =itemView.findViewById(R.id.article_desc);
             articlePrice=itemView.findViewById(R.id.article_price);
             imgArticle=itemView.findViewById(R.id.article_img);
         }
