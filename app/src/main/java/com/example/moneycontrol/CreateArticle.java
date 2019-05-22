@@ -1,8 +1,10 @@
 package com.example.moneycontrol;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +23,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.tapadoo.alerter.Alerter;
 
 import java.util.ArrayList;
@@ -34,18 +40,24 @@ public class CreateArticle extends AppCompatActivity {
     private EditText ArticleName, ArticleDesc, Price;
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
-    private String currentUserId;
+    private String currentArticleId, currentUserId, Image;
     FirebaseAuth firebaseAuth;
     private ArrayList<Articles> articlesArrayList = new ArrayList<>();
     private Button BtnUpload;
+    private StorageReference myStorage;
+    private static final int GALERY_INTENT = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_articles);
+        Image="gs://espantajopo-cd7bc.appspot.com/fotos/storage/emulated/0/DCIM/Facebook/FB_IMG_1557963452702.jpg";
         BtnUpload =findViewById(R.id.btnUploadImg);
         firebaseAuth =FirebaseAuth.getInstance();
         RootReference = FirebaseDatabase.getInstance().getReference();
-        currentUserId=RootReference.push().getKey();
+        currentArticleId=RootReference.push().getKey();
+        currentUserId=firebaseAuth.getCurrentUser().getUid();
+        myStorage = FirebaseStorage.getInstance().getReference();
         BtnCreate = findViewById(R.id.btnCreateArticle);
         ArticleName =findViewById(R.id.TxtArticleName);
         ArticleDesc =findViewById(R.id.TxtArticleDesc);
@@ -61,11 +73,15 @@ public class CreateArticle extends AppCompatActivity {
                             .setDismissable(true).show();
                     Toast.makeText(CreateArticle.this, R.string.empty, Toast.LENGTH_LONG).show();
                 } else {
-                    String IdOn, NameOn, LastNameOn, EmailOn, PasswordOn;
-                    IdOn=currentUserId;
+                    String IdOn,  NameOn,  DescriptionOn,  ImageOn,  UserIdOn;
+                    Double PriceOn;
+                    ImageOn=Image;
+                    IdOn=currentArticleId;
                     NameOn = ArticleName.getText().toString();
-                    LastNameOn = ArticleDesc.getText().toString();
-                   // LoadFirebaseData(IdOn, NameOn, LastNameOn, EmailOn, PasswordOn);
+                    DescriptionOn = ArticleDesc.getText().toString();
+                    PriceOn=Double.parseDouble(Price.getText().toString());
+                    UserIdOn=currentUserId;
+                   LoadFirebaseData(IdOn, NameOn, DescriptionOn, PriceOn, ImageOn, UserIdOn);
                     Toast.makeText(CreateArticle.this, R.string.done, Toast.LENGTH_LONG).show();
                 }
             }
@@ -73,19 +89,44 @@ public class CreateArticle extends AppCompatActivity {
         BtnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CreateArticle.this, MainActivity.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");// * es para que tome todas las extenciones
+                startActivityForResult(intent,GALERY_INTENT);
             }
         });
     }
-    private void LoadFirebaseData(String idOn, String nameOn, String descriptionOn, String priceOn, String passwordOn) {
+    private void LoadFirebaseData(String idOn, String nameOn, String descriptionOn, Double priceOn, String imageOn, String userIdOn) {
         Map<String, Object> ArticleData = new HashMap<>();
-        ArticleData.put("Id",idOn);
-        ArticleData.put("ArticleName",nameOn);
-        ArticleData.put("LastName", descriptionOn);
-        ArticleData.put("Email", priceOn);
-        ArticleData.put("Password", passwordOn);
-        RootReference.child("User").push().setValue(ArticleData);
+        ArticleData.put("IdArticle",idOn);
+        ArticleData.put("Name",nameOn);
+        ArticleData.put("Description", descriptionOn);
+        ArticleData.put("Price", priceOn);
+        ArticleData.put("Image", imageOn);
+        ArticleData.put("UserId", userIdOn);
+
+        RootReference.child("Articles").push().setValue(ArticleData);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode== GALERY_INTENT && resultCode == RESULT_OK){
+            Uri uri=data.getData();
+            StorageReference filepath = myStorage.child("fotos").child(uri.getLastPathSegment());
+            filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Alerter.create(CreateArticle.this)
+                            .setTitle(R.string.upload_img)
+                            .setText(R.string.upload_img_s)
+                            .setIcon(R.drawable.ic_image)
+                            .setBackgroundColorRes(R.color.purble_black)
+                            .enableVibration(true)
+                            .setDismissable(true)
+                            .enableProgress(true)
+                            .show();
+                    /*Toast.makeText(UserDetails.this,"se subio exitosamente",Toast.LENGTH_SHORT).show();*/
+                }
+            });
+        }
     }
 }

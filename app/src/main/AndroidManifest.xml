@@ -19,6 +19,8 @@
         <activity android:name=".UserDetails"></activity>
         <activity android:name=".SingUp"></activity>
         <activity android:name=".SideNav"></activity>
+        <activity android:name=".CreateArticle"></activity>
+
 
 
     </application>

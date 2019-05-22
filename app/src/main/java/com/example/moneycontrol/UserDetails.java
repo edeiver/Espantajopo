@@ -42,8 +42,7 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
     private TextView idTextView;
     private DrawerLayout drawer;
     private GoogleApiClient googleApiClient;
-    private Button upload; // upload image
-
+    private Button upload, articleBtn; // upload image
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
@@ -72,6 +71,15 @@ cu
         emailTextView = (TextView) findViewById(R.id.emailTextView);
         idTextView = (TextView) findViewById(R.id.idTextView);
         upload = (Button) findViewById(R.id.addimage);
+        articleBtn= findViewById(R.id.createArt);
+
+        articleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(UserDetails.this, CreateArticle.class);
+                startActivity(intent);
+            }
+        });
 
         upload.setOnClickListener(new View.OnClickListener() {
             @Override

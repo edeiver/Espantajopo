@@ -175,7 +175,8 @@
                     android:layout_toRightOf="@+id/imgView_passwordIcon"
                     android:background="@drawable/et_bg"
                     android:hint="@string/price"
-                    android:inputType="textPassword"
+
+                    android:inputType="number"
                     android:paddingLeft="20dp"
                     android:textColor="@color/common_google_signin_btn_text_dark_default"
                     android:textColorHint="@color/login_from_details"

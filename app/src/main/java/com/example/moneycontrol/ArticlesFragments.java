@@ -58,20 +58,20 @@ public class ArticlesFragments extends Fragment {
             UsersRef.child(usersIDS).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.hasChild("image")){
-                        String ArticleImage= dataSnapshot.child("image").getValue().toString();
-                        String ArticleName= dataSnapshot.child("name").getValue().toString();
-                        String ArticleDesc= dataSnapshot.child("description").getValue().toString();
-                        String ArticlePrice= dataSnapshot.child("price").getValue().toString();
+                    if(dataSnapshot.hasChild("Image")){
+                        String ArticleImage= dataSnapshot.child("Image").getValue().toString();
+                        String ArticleName= dataSnapshot.child("Name").getValue().toString();
+                        String ArticleDesc= dataSnapshot.child("Description").getValue().toString();
+                        String ArticlePrice= dataSnapshot.child("Price").getValue().toString();
                         holder.articleName.setText(ArticleName);
                         holder.articleDescription.setText(ArticleDesc);
                         holder.articlePrice.setText(ArticlePrice);
                         Glide.with(getContext()).load(ArticleImage).placeholder(R.drawable.ic_item).into(holder.imgArticle);
 
                     }else{
-                        String ArticleName= dataSnapshot.child("name").getValue().toString();
-                        String ArticleDesc= dataSnapshot.child("description").getValue().toString();
-                        String ArticlePrice= dataSnapshot.child("price").getValue().toString();
+                        String ArticleName= dataSnapshot.child("Name").getValue().toString();
+                        String ArticleDesc= dataSnapshot.child("Description").getValue().toString();
+                        String ArticlePrice= dataSnapshot.child("Price").getValue().toString();
                         holder.articleName.setText(ArticleName);
                         holder.articleDescription.setText(ArticleDesc);
                         holder.articlePrice.setText(ArticlePrice);

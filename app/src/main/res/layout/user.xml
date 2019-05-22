@@ -87,6 +87,18 @@
                 android:text="@string/upload_img"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="227dp" />
+            <Button
+                android:id="@+id/createArt"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/et_bg"
+                android:text="@string/article_name"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="227dp" />
 
         </LinearLayout>
     </LinearLayout>
