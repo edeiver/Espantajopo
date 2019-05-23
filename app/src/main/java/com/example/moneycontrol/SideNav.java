@@ -33,7 +33,7 @@ public class SideNav extends AppCompatActivity implements NavigationView.OnNavig
         toggle.syncState();
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new ArticlesFragments()).commit();
+                    new UserDetailsFragments()).commit();
             navigationView.setCheckedItem(R.id.nav_profile);
         }
     }
@@ -41,6 +41,10 @@ public class SideNav extends AppCompatActivity implements NavigationView.OnNavig
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.nav_profile:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new UserDetailsFragments()).commit();
+                break;
+            case R.id.nav_register:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ArticlesFragments()).commit();
                 break;

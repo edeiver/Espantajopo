@@ -14,11 +14,14 @@
     </group>
     <item android:title="Acount">
         <menu>
-            <item
-                android:id="@+id/nav_profile"
-                android:icon="@drawable/ic_person"
-                android:title="Profile"
-                />
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/ic_person"
+                    android:title="Profile"
+                    />
+            </group>
+
         </menu>
     </item>
 </menu>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_test"
+    android:background="@drawable/et_bg"
     android:theme="@style/ThemeOverlay.AppCompat">
 
     <LinearLayout
@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
-                android:textColor="@color/common_google_signin_btn_text_dark_default"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
-                android:textColor="@color/common_google_signin_btn_text_dark_default"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <TextView
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
-                android:textColor="@color/common_google_signin_btn_text_dark_default"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <Button
@@ -58,18 +58,19 @@
                 android:layout_margin="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/et_bg"
+                android:background="@drawable/bt_ubg"
                 android:onClick="logOut"
                 android:text="log out"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="227dp" />
 
             <Button
+                android:id="@+id/revokeBtn"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/et_bg"
+                android:background="@drawable/bt_ubg"
                 android:onClick="revoke"
                 android:text="revoke"
                 tools:layout_editor_absoluteX="0dp"
@@ -83,7 +84,7 @@
                 android:layout_margin="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/et_bg"
+                android:background="@drawable/bt_ubg"
                 android:text="@string/upload_img"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="227dp" />
@@ -95,7 +96,7 @@
                 android:layout_margin="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/et_bg"
+                android:background="@drawable/bt_ubg"
                 android:text="@string/article_name"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="227dp" />

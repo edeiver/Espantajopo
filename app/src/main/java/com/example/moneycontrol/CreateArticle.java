@@ -51,7 +51,7 @@ public class CreateArticle extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_articles);
-        Image="gs://espantajopo-cd7bc.appspot.com/fotos/storage/emulated/0/DCIM/Facebook/FB_IMG_1557963452702.jpg";
+        Image="https://firebasestorage.googleapis.com/v0/b/espantajopo-cd7bc.appspot.com/o/fotos%2Fstorage%2Femulated%2F0%2FDCIM%2FFacebook%2FFB_IMG_1558545927300.jpg?alt=media&token=90cc8c75-d130-486c-8eeb-a7dbe6cbece9";
         BtnUpload =findViewById(R.id.btnUploadImg);
         firebaseAuth =FirebaseAuth.getInstance();
         RootReference = FirebaseDatabase.getInstance().getReference();
@@ -75,6 +75,7 @@ public class CreateArticle extends AppCompatActivity {
                 } else {
                     String IdOn,  NameOn,  DescriptionOn,  ImageOn,  UserIdOn;
                     Double PriceOn;
+
                     ImageOn=Image;
                     IdOn=currentArticleId;
                     NameOn = ArticleName.getText().toString();
@@ -103,14 +104,13 @@ public class CreateArticle extends AppCompatActivity {
         ArticleData.put("Price", priceOn);
         ArticleData.put("Image", imageOn);
         ArticleData.put("UserId", userIdOn);
-
         RootReference.child("Articles").push().setValue(ArticleData);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode== GALERY_INTENT && resultCode == RESULT_OK){
-            Uri uri=data.getData();
+            final Uri uri=data.getData();
             StorageReference filepath = myStorage.child("fotos").child(uri.getLastPathSegment());
             filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override

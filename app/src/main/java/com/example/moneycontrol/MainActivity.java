@@ -52,14 +52,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         login = findViewById(R.id.BtnLogin);
         email = findViewById(R.id.userName);
         password = findViewById(R.id.password);
-        or = findViewById(R.id.or);
+       /* or = findViewById(R.id.or);*/
         button = findViewById(R.id.BtnSingUp);
-        v2 = findViewById(R.id.line2);
+       /* v2 = findViewById(R.id.line2);*/
         v = findViewById(R.id.line1);
         v3 = findViewById(R.id.footer_line);
         load = findViewById(R.id.loading);
-        rpass = findViewById(R.id.forgot_password);
-        rpass.setOnClickListener(new View.OnClickListener() {
+        /*rpass = findViewById(R.id.forgot_password);*/
+        /*rpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SideNav.class);
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 startActivity(intent);
 
             }
-        });
+        });*/
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     private void goUserDetail() {
 
-        Intent intent = new Intent(this, UserDetails.class);
+        Intent intent = new Intent(this, SideNav.class);
        // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                             //Log.e("logged", "onComplete: " + task.isSuccessful());
 
                             if (task.isSuccessful()) {
-                                /**/Intent intent = new Intent(MainActivity.this, UserDetails.class);
+                                /**/Intent intent = new Intent(MainActivity.this, SideNav.class);
                                 // Intent intent2 = new Intent(getApplicationContext(), UserDetails.class);
                                 //  intent.putExtras(intent2);
                                 startActivity(intent);

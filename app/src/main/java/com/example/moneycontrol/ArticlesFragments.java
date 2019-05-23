@@ -22,7 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ArticlesFragments extends Fragment {
+public class ArticlesFragments extends Fragment  {
     private View ArticlesView;
     private RecyclerView myArticlesList;
     private DatabaseReference ArticlesRef, UsersRef;
@@ -39,7 +39,7 @@ public class ArticlesFragments extends Fragment {
         myArticlesList.setLayoutManager(new LinearLayoutManager(getContext()));
         mAuth = FirebaseAuth.getInstance();
         currentUserId=mAuth.getCurrentUser().getUid();
-        ArticlesRef = FirebaseDatabase.getInstance().getReference().child("Articles").child(currentUserId);
+        ArticlesRef = FirebaseDatabase.getInstance().getReference().child("Articles");
         UsersRef = FirebaseDatabase.getInstance().getReference().child("User");
         return ArticlesView;
     }
@@ -54,8 +54,8 @@ public class ArticlesFragments extends Fragment {
                 = new FirebaseRecyclerAdapter<Articles, ArticlesViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final ArticlesViewHolder holder, int position, @NonNull Articles model) {
-            String usersIDS = getRef(position).getKey();
-            UsersRef.child(usersIDS).addValueEventListener(new ValueEventListener() {
+            String IdArticle = getRef(position).getKey();
+                ArticlesRef.child(IdArticle).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if(dataSnapshot.hasChild("Image")){

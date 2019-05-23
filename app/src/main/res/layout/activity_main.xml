@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_test"
-    tools:context=".MainActivity"
-    >
+    tools:context=".MainActivity">
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_left"
@@ -63,7 +62,7 @@
         android:id="@+id/userName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/et_bg"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
@@ -72,6 +71,7 @@
         android:textColorHint="@color/login_from_details"
         android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/icon" />
 
@@ -79,7 +79,7 @@
         android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/et_bg"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -88,6 +88,7 @@
         android:textColorHint="@color/login_from_details"
         android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/userName" />
 
@@ -97,31 +98,19 @@
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/btn_log"
-        android:text="@string/login_now"
         android:onClick="Login"
+        android:text="@string/login_now"
         android:textColor="@color/blue_l"
         android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
-    <Button
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:id="@+id/forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/fragment"
-        android:textColor="@color/login_from_details"
-        android:visibility="visible"
-        app:layout_constraintEnd_toStartOf="@id/guideline_right"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/BtnLogin"
-        />
 
     <View
         android:id="@+id/footer_line"
@@ -130,8 +119,8 @@
         android:layout_marginBottom="68dp"
         android:background="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/BtnSingUp"
@@ -161,8 +150,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/footer_line"
-        />
+        app:layout_constraintTop_toBottomOf="@id/footer_line" />
 
     <!-- <TextView
         android:id="@+id/facebook_login"
@@ -189,40 +177,6 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
-    <View
-        android:id="@+id/line1"
-        android:layout_width="120dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="56dp"
-        android:background="@color/login_from_details_medium"
-        app:layout_constraintEnd_toStartOf="@+id/or"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/forgot_password" />
-
-    <TextView
-        android:id="@+id/or"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/or"
-        android:textColor="@color/login_from_details"
-        android:textSize="16sp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/line1"
-        app:layout_constraintEnd_toStartOf="@+id/line2"
-        app:layout_constraintStart_toEndOf="@+id/line1"
-        app:layout_constraintTop_toTopOf="@+id/line1" />
-
-
-    <View
-        android:id="@+id/line2"
-        android:layout_width="120dp"
-        android:layout_height="1dp"
-        android:background="@color/login_from_details_medium"
-        app:layout_constraintBottom_toBottomOf="@+id/or"
-        app:layout_constraintEnd_toEndOf="@id/guideline_right"
-        app:layout_constraintStart_toEndOf="@+id/or"
-        app:layout_constraintTop_toTopOf="@+id/or" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -235,8 +189,8 @@
         android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/userName"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/userName" />
+
     <TextView
         android:id="@+id/loading"
         android:layout_width="wrap_content"
@@ -247,7 +201,7 @@
         android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar"  />
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
 
 </android.support.constraint.ConstraintLayout>
