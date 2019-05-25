@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private void goUserDetail() {
 
         Intent intent = new Intent(this, SideNav.class);
-       // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                             //Log.e("logged", "onComplete: " + task.isSuccessful());
 
                             if (task.isSuccessful()) {
-                                /**/Intent intent = new Intent(MainActivity.this, SideNav.class);
+                                /**/Intent intent = new Intent(MainActivity.this, UserDetails.class);
                                 // Intent intent2 = new Intent(getApplicationContext(), UserDetails.class);
                                 //  intent.putExtras(intent2);
                                 startActivity(intent);

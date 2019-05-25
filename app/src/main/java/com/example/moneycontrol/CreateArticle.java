@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -76,13 +77,13 @@ public class CreateArticle extends AppCompatActivity {
                     String IdOn,  NameOn,  DescriptionOn,  ImageOn,  UserIdOn;
                     Double PriceOn;
 
-                    ImageOn=Image;
+                    //ImageOn=Image;
                     IdOn=currentArticleId;
                     NameOn = ArticleName.getText().toString();
                     DescriptionOn = ArticleDesc.getText().toString();
                     PriceOn=Double.parseDouble(Price.getText().toString());
                     UserIdOn=currentUserId;
-                   LoadFirebaseData(IdOn, NameOn, DescriptionOn, PriceOn, ImageOn, UserIdOn);
+                  // LoadFirebaseData(IdOn, NameOn, DescriptionOn, PriceOn, UserIdOn);
                     Toast.makeText(CreateArticle.this, R.string.done, Toast.LENGTH_LONG).show();
                 }
             }
@@ -96,7 +97,7 @@ public class CreateArticle extends AppCompatActivity {
             }
         });
     }
-    private void LoadFirebaseData(String idOn, String nameOn, String descriptionOn, Double priceOn, String imageOn, String userIdOn) {
+    private void LoadFirebaseData(String idOn, String nameOn, String descriptionOn, Double priceOn,String imageOn, String userIdOn) {
         Map<String, Object> ArticleData = new HashMap<>();
         ArticleData.put("IdArticle",idOn);
         ArticleData.put("Name",nameOn);
@@ -110,23 +111,68 @@ public class CreateArticle extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode== GALERY_INTENT && resultCode == RESULT_OK){
-            final Uri uri=data.getData();
-            StorageReference filepath = myStorage.child("fotos").child(uri.getLastPathSegment());
+             final Uri uri=data.getData();
+            final StorageReference filepath = myStorage.child("fotos").child(uri.getLastPathSegment());
             filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Alerter.create(CreateArticle.this)
-                            .setTitle(R.string.upload_img)
-                            .setText(R.string.upload_img_s)
-                            .setIcon(R.drawable.ic_image)
-                            .setBackgroundColorRes(R.color.purble_black)
-                            .enableVibration(true)
-                            .setDismissable(true)
-                            .enableProgress(true)
-                            .show();
-                    /*Toast.makeText(UserDetails.this,"se subio exitosamente",Toast.LENGTH_SHORT).show();*/
+                    Task<Uri> result = taskSnapshot.getMetadata().getReference().getDownloadUrl();
+                    result.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            if (ArticleName.getText().length() == 0 || ArticleDesc.getText().length() == 0 || Price.getText().length()==0) {
+                                Alerter.create(CreateArticle.this).setText(R.string.empty)
+                                        .setTitle("Error").setBackgroundColorRes(R.color.colorAccent)
+                                        .setIcon(R.drawable.ic_format_list)
+                                        .enableVibration(true)
+                                        .setDismissable(true).show();
+                                Toast.makeText(CreateArticle.this, R.string.empty, Toast.LENGTH_LONG).show();
+                            }else {
+                                Alerter.create(CreateArticle.this)
+                                        .setTitle(R.string.upload_img)
+                                        .setText(R.string.upload_img_s)
+                                        .setIcon(R.drawable.ic_image)
+                                        .setBackgroundColorRes(R.color.purble_black)
+                                        .enableVibration(true)
+                                        .setDismissable(true)
+                                        .enableProgress(true)
+                                        .show();
+                                String IdOn, NameOn, DescriptionOn, UserIdOn;
+                                Double PriceOn;
+                                String url = uri.toString();
+                                IdOn = currentArticleId;
+                                NameOn = ArticleName.getText().toString();
+                                DescriptionOn = ArticleDesc.getText().toString();
+                                PriceOn = Double.parseDouble(Price.getText().toString());
+                                UserIdOn = currentUserId;
+                                Map<String, Object> ArticleData = new HashMap<>();
+                                ArticleData.put("IdArticle", IdOn);
+                                ArticleData.put("Name", NameOn);
+                                ArticleData.put("Description", DescriptionOn);
+                                ArticleData.put("Price", PriceOn);
+                                ArticleData.put("Image", url);
+                                ArticleData.put("UserId", UserIdOn);
+                                RootReference.child("Articles").push().setValue(ArticleData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(getApplicationContext(), "Se ha creado el nuevo articulo", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "Error al subir", Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
+
+                    /* Toast.makeText(UserDetails.this,"se subio exitosamente",Toast.LENGTH_SHORT).show();*/
                 }
-            });
+            });//*/
+                }
+
+
         }
     }
-}
+
