@@ -66,9 +66,9 @@ public class SingUp extends AppCompatActivity {
                 } else if(Password.getText().toString().equals(Password2.getText().toString())) {
                     String IdOn, NameOn, LastNameOn, EmailOn, PasswordOn;
                     IdOn=currentUserId;
-                    NameOn = Name.getText().toString();
-                    LastNameOn = Lastname.getText().toString();
-                    EmailOn = Email.getText().toString();
+                    NameOn = Name.getText().toString().trim();
+                    LastNameOn = Lastname.getText().toString().trim();
+                    EmailOn = Email.getText().toString().trim();
                     PasswordOn = Password.getText().toString();
                     LoadFirebaseData(IdOn, NameOn, LastNameOn, EmailOn, PasswordOn);
                     SingUp(EmailOn, PasswordOn);

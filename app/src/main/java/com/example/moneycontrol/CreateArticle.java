@@ -79,9 +79,9 @@ public class CreateArticle extends AppCompatActivity {
 
                     //ImageOn=Image;
                     IdOn = currentArticleId;
-                    NameOn = ArticleName.getText().toString();
-                    DescriptionOn = ArticleDesc.getText().toString();
-                    PriceOn = Double.parseDouble(Price.getText().toString());
+                    NameOn = ArticleName.getText().toString().trim();
+                    DescriptionOn = ArticleDesc.getText().toString().trim();
+                    PriceOn = Double.parseDouble(Price.getText().toString().trim());
                     UserIdOn = currentUserId;
                     // LoadFirebaseData(IdOn, NameOn, DescriptionOn, PriceOn, UserIdOn);
                     Toast.makeText(CreateArticle.this, R.string.done, Toast.LENGTH_LONG).show();

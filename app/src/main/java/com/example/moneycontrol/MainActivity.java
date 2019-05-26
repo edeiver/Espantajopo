@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     public void Login(View view) {
-        final String Email = email.getText().toString();
+        final String Email = email.getText().toString().trim();
         String Password = password.getText().toString();
         if (Email.isEmpty() || Password.isEmpty()) {
             Alerter.create(this).setText(R.string.empty)
