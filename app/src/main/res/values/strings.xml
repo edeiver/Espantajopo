@@ -36,5 +36,6 @@
     <string name="up_and_cre">Upload Image An Create The Article</string>
     <string name="create_and_upload">¡The new article has been created!</string>
     <string name="upload_error">¡Error uploading the image!</string>
+    <string name="logout">Logout</string>
 
 </resources>

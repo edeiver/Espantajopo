@@ -60,7 +60,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/bt_ubg"
                 android:onClick="logOut"
-                android:text="log out"
+                android:text="@string/logout"
                 android:textColor="@color/white"
                  />
 
@@ -73,8 +73,7 @@
                 android:background="@drawable/bt_ubg"
                 android:onClick="revoke"
                 android:textColor="@color/white"
-                android:text="revoke"
-                 />
+                android:text="@string/revoke" />
 
             <Button
                 android:id="@+id/addimage"
