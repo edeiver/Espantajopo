@@ -63,13 +63,13 @@ public class SingUp extends AppCompatActivity {
                             .enableVibration(true)
                             .setDismissable(true).show();
                     Toast.makeText(SingUp.this, R.string.empty, Toast.LENGTH_LONG).show();
-                } else if(Password.getText().toString().equals(Password2.getText().toString())) {
+                } else if(Password.getText().toString().trim().equals(Password2.getText().toString().trim())&& Password.getText().toString().trim().length()>= 6 ) {
                     String IdOn, NameOn, LastNameOn, EmailOn, PasswordOn;
                     IdOn=currentUserId;
                     NameOn = Name.getText().toString().trim();
                     LastNameOn = Lastname.getText().toString().trim();
                     EmailOn = Email.getText().toString().trim();
-                    PasswordOn = Password.getText().toString();
+                    PasswordOn = Password.getText().toString().trim();
                     LoadFirebaseData(IdOn, NameOn, LastNameOn, EmailOn, PasswordOn);
                     SingUp(EmailOn, PasswordOn);
                     Toast.makeText(SingUp.this, R.string.done, Toast.LENGTH_LONG).show();

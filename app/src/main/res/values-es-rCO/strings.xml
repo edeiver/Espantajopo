@@ -22,7 +22,7 @@
     <string name="error">Usuario no valido.</string>
     <string name="navigation_drawer_open">Abrir menu</string>
     <string name="navigation_drawer_close">Cerrar menu</string>
-    <string name="not_match">¡No coinciden!</string>
+    <string name="not_match">¡No coinciden o la contraseña es muy corta!</string>
     <string name="upload_img">Subir imagen</string>
     <string name="upload_img_s">¡Imagen subida exitosamente!</string>
     <string name="article_name">Nombre del articulo</string>
