@@ -5,31 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_test"
     >
-
-    <RelativeLayout
-        android:id="@+id/reltxt"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp"
-
-        >
-
-    </RelativeLayout>
-
     <android.support.v7.widget.CardView
         android:id="@+id/cardform"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="100dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         app:cardCornerRadius="10dp"
-        app:cardElevation="0dp"
-        app:cardBackgroundColor="@color/login_form_details_light">
+        app:cardElevation="10dp"
+        app:cardBackgroundColor="@color/blue_l">
 
         <RelativeLayout
             android:id="@+id/RLayout1"
@@ -43,7 +32,6 @@
                 android:layout_height="119dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="0dp"
-
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -53,8 +41,8 @@
                     android:layout_marginTop="20dp"
                     android:background="@null"
                     android:padding="10dp"
-                    android:src="@drawable/img_register"
-                    android:tint="@color/common_google_signin_btn_text_dark_default" />
+                    android:src="@drawable/ic_format_list"
+                    android:tint="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -62,8 +50,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="20dp"
                     android:gravity="center"
-                    android:text="@string/article_name"
-                    android:textColor="@color/common_google_signin_btn_text_dark_default"
+                    android:text="@string/article"
+                    android:textColor="@color/white"
                     android:textSize="14sp"
                     app:fontFamily="@font/sofiaregular" />
 
@@ -86,17 +74,20 @@
                 android:layout_below="@+id/imageView1"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
-
                 android:layout_marginRight="30dp">
 
                 <ImageView
                     android:id="@+id/imgView_userIcon"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
                     android:background="@null"
                     android:padding="8dp"
-                    android:src="@drawable/img_user"
-                    android:tint="@color/common_google_signin_btn_text_dark_default" />
+                    android:src="@drawable/ic_item"
+                    android:tint="@color/white" />
 
                 <EditText
                     android:id="@+id/TxtArticleName"
@@ -108,8 +99,8 @@
                     android:background="@drawable/et_bg"
                     android:hint="@string/article_name"
                     android:paddingLeft="20dp"
-                    android:textColor="@color/common_google_signin_btn_text_dark_default"
-                    android:textColorHint="@color/login_from_details"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
                     android:textSize="15sp" />
 
             </RelativeLayout>
@@ -129,8 +120,8 @@
                     android:layout_height="40dp"
                     android:background="@null"
                     android:padding="8dp"
-                    android:src="@drawable/img_user"
-                    android:tint="@color/common_google_signin_btn_text_dark_default" />
+                    android:src="@drawable/ic_description"
+                    android:tint="@color/white" />
 
                 <EditText
                     android:id="@+id/TxtArticleDesc"
@@ -142,8 +133,8 @@
                     android:background="@drawable/et_bg"
                     android:hint="@string/description"
                     android:paddingLeft="20dp"
-                    android:textColor="@color/common_google_signin_btn_text_dark_default"
-                    android:textColorHint="@color/login_from_details"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
                     android:textSize="15sp" />
 
             </RelativeLayout>
@@ -163,8 +154,8 @@
                     android:layout_height="40dp"
                     android:background="@null"
                     android:padding="8dp"
-                    android:src="@drawable/img_authentication"
-                    android:tint="@color/common_google_signin_btn_text_dark_default" />
+                    android:src="@drawable/ic_monetization"
+                    android:tint="@color/white" />
 
                 <EditText
                     android:id="@+id/TextPrice"
@@ -175,11 +166,10 @@
                     android:layout_toRightOf="@+id/imgView_passwordIcon"
                     android:background="@drawable/et_bg"
                     android:hint="@string/price"
-
                     android:inputType="number"
                     android:paddingLeft="20dp"
-                    android:textColor="@color/common_google_signin_btn_text_dark_default"
-                    android:textColorHint="@color/login_from_details"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
                     android:textSize="15sp" />
 
             </RelativeLayout>
@@ -234,7 +224,7 @@
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/btn_log"
                 android:fontFamily="sans-serif-medium"
-                android:text="Upload Image An Create The Article"
+                android:text="@string/up_and_cre"
                 android:textColor="@color/blue_l"
                 />
 

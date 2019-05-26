@@ -54,17 +54,6 @@ public class UserDetails extends AppCompatActivity implements GoogleApiClient.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user);
 
- /*       Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-       drawer = findViewById(R.id.drawer_layout);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-cu
-*/
         myStorage = FirebaseStorage.getInstance().getReference();
         photoImageView = (ImageView) findViewById(R.id.photoImageView);
         nameTextView = (TextView) findViewById(R.id.nameTextView);
@@ -139,14 +128,10 @@ cu
                             .setDismissable(true)
                             .enableProgress(true)
                             .show();
-                    /*Toast.makeText(UserDetails.this,"se subio exitosamente",Toast.LENGTH_SHORT).show();*/
                 }
             });
         }
     }
-    /* private void setSupportActionBar(Toolbar toolbar) {
-    }*/
-
     private void setUserData(FirebaseUser user) {
         nameTextView.setText(user.getDisplayName());
         emailTextView.setText(user.getEmail());

@@ -33,8 +33,8 @@ public class SideNav extends AppCompatActivity implements NavigationView.OnNavig
         toggle.syncState();
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new UserDetailsFragments()).commit();
-            navigationView.setCheckedItem(R.id.nav_profile);
+                    new ArticlesFragments()).commit();
+            navigationView.setCheckedItem(R.id.nav_List);
         }
     }
     @Override
@@ -44,9 +44,13 @@ public class SideNav extends AppCompatActivity implements NavigationView.OnNavig
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new UserDetailsFragments()).commit();
                 break;
-            case R.id.nav_register:
+            case R.id.nav_List:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ArticlesFragments()).commit();
+                break;
+            case R.id.nav_Additem:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new CreateArticleFragment()).commit();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

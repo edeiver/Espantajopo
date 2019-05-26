@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private TextView load, or;
     private View v, v2, v3;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,17 +57,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         v = findViewById(R.id.line1);
         v3 = findViewById(R.id.footer_line);
         load = findViewById(R.id.loading);
-        /*rpass = findViewById(R.id.forgot_password);*/
-        /*rpass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SideNav.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-
-            }
-        });*/
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,21 +96,16 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             }
         };
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-
     }
-
     @Override
     protected void onStart() {
         super.onStart();
-
         firebaseAuth.addAuthStateListener(firebaseAuthListener);
     }
-
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -132,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             handleSignInResult(result);
         }
     }
-
     private void handleSignInResult(GoogleSignInResult result) {
         if (result.isSuccess()) {
             firebaseAuthWithGoogle(result.getSignInAccount());
@@ -199,19 +181,16 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     private void goUserDetail() {
-
         Intent intent = new Intent(this, SideNav.class);
-       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-
         if (firebaseAuthListener != null) {
-            firebaseAuth.removeAuthStateListener(firebaseAuthListener);
-            //Toast.makeText(getApplicationContext(), R.string.close_s, Toast.LENGTH_LONG).show();
+            firebaseAuth.removeAuthStateListener(firebaseAuthListener);//Toast.makeText(getApplicationContext(), R.string.close_s, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -230,22 +209,16 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     .setIcon(R.drawable.ic_format_list)
                     .enableVibration(true)
                     .setDismissable(true).show();
-            //Toast.makeText(MainActivity.this, R.string.empty, Toast.LENGTH_SHORT).show();
             email.setError("Empty field"/*,getResources().getDrawable(R.drawable.ic_logout)*/);
             password.setError("Empty field"/*,getResources().getDrawable(R.drawable.ic_logout)*/);
-            //showAlerter(This);
-
         } else {
             firebaseAuth.signInWithEmailAndPassword(Email, Password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             //Log.e("logged", "onComplete: " + task.isSuccessful());
-
                             if (task.isSuccessful()) {
-                                /**/Intent intent = new Intent(MainActivity.this, UserDetails.class);
-                                // Intent intent2 = new Intent(getApplicationContext(), UserDetails.class);
-                                //  intent.putExtras(intent2);
+                                Intent intent = new Intent(MainActivity.this, SideNav.class);
                                 startActivity(intent);
                             } else {
                                 Toast toast = Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG);
@@ -260,7 +233,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                                         .show();
 
                             }
-
 
                         }
                     });

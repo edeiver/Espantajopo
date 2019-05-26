@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/et_bg"
+    android:layout_height="wrap_content"
     android:theme="@style/ThemeOverlay.AppCompat">
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -17,7 +17,9 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginTop="60dp"
+            android:orientation="vertical"
+            >
 
             <ImageView
                 android:id="@+id/photoImageView"
@@ -56,13 +58,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:background="@drawable/bt_ubg"
                 android:onClick="logOut"
                 android:text="log out"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="227dp" />
+                android:textColor="@color/white"
+                 />
 
             <Button
                 android:id="@+id/revokeBtn"
@@ -72,9 +72,9 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/bt_ubg"
                 android:onClick="revoke"
+                android:textColor="@color/white"
                 android:text="revoke"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="275dp" />
+                 />
 
             <Button
                 android:id="@+id/addimage"
@@ -86,6 +86,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/bt_ubg"
                 android:text="@string/upload_img"
+                android:visibility="gone"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="227dp" />
             <Button
@@ -97,6 +98,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/bt_ubg"
+                android:visibility="gone"
                 android:text="@string/article_name"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="227dp" />
