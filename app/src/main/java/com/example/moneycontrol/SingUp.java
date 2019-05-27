@@ -56,7 +56,8 @@ public class SingUp extends AppCompatActivity {
         BtnSingup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Name.getText().length() == 0 || Lastname.getText().length() == 0 || Email.getText().length() == 0 || Password.getText().length() == 0) {
+                if (Name.getText().toString().trim().isEmpty() || Lastname.getText().toString().trim().isEmpty() || Email.getText().toString().trim().isEmpty() || Password.getText().toString().trim().isEmpty()) {
+
                     Alerter.create(SingUp.this).setText(R.string.empty)
                             .setTitle("Error").setBackgroundColorRes(R.color.colorAccent)
                             .setIcon(R.drawable.ic_format_list)
