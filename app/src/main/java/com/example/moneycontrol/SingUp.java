@@ -56,15 +56,22 @@ public class SingUp extends AppCompatActivity {
         BtnSingup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Name.getText().toString().trim().isEmpty() || Lastname.getText().toString().trim().isEmpty() || Email.getText().toString().trim().isEmpty() || Password.getText().toString().trim().isEmpty()) {
-
+                if (Name.getText().toString().trim().isEmpty() || Lastname.getText().toString().trim().isEmpty() || Email.getText().toString().trim().isEmpty() || Password.getText().toString().isEmpty()||Password2.getText().toString().isEmpty()) {
                     Alerter.create(SingUp.this).setText(R.string.empty)
                             .setTitle("Error").setBackgroundColorRes(R.color.colorAccent)
                             .setIcon(R.drawable.ic_format_list)
                             .enableVibration(true)
                             .setDismissable(true).show();
                     Toast.makeText(SingUp.this, R.string.empty, Toast.LENGTH_LONG).show();
-                } else if(Password.getText().toString().trim().equals(Password2.getText().toString().trim())&& Password.getText().toString().trim().length()>= 6 ) {
+                } else if(Password.getText().toString().trim().isEmpty()||Password2.getText().toString().trim().isEmpty()){
+                            Alerter.create(SingUp.this).setText(R.string.invalid)
+                            .setTitle("Error").setBackgroundColorRes(R.color.colorAccent)
+                            .setIcon(R.drawable.ic_no_encryption)
+                            .enableVibration(true)
+                            .setDismissable(true).show();
+                    Password.setError(getText(R.string.invalid));
+                    Password2.setError(getText(R.string.invalid));
+                }else if(Password.getText().toString().trim().equals(Password2.getText().toString().trim())&& Password.getText().toString().trim().length()>= 6 ) {
                     String IdOn, NameOn, LastNameOn, EmailOn, PasswordOn;
                     IdOn=currentUserId;
                     NameOn = Name.getText().toString().trim();
