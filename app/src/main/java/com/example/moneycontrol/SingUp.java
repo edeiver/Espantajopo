@@ -150,7 +150,7 @@ public class SingUp extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast toast = Toast.makeText(SingUp.this, R.string.welcome, Toast.LENGTH_LONG);
                             toast.show();
-                             Intent intent = new Intent(SingUp.this, SideNav.class);
+                            Intent intent = new Intent(SingUp.this, SideNav.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
                             startActivity(intent);
