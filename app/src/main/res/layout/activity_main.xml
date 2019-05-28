@@ -172,6 +172,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginBottom="16dp"
+        android:visibility="gone"
         android:drawablePadding="8dp"
         app:layout_constraintBottom_toTopOf="@id/footer_line"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"

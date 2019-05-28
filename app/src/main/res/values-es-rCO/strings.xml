@@ -36,6 +36,7 @@
     <string name="upload_error">¡Error al subir la imagen!</string>
     <string name="logout">Cerrar Sesion</string>
     <string name="invalid">Campo invalido</string>
-    <string name="email_c">Contact email</string>
+    <string name="email_c">Email del contacto</string>
     <string name="rent_st">Tienda de alquiler</string>
+    <string name="sing_up">Crear cuenta</string>
 </resources>

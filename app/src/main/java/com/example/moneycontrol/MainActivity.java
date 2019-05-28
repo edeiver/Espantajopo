@@ -176,8 +176,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     .setIcon(R.drawable.ic_format_list)
                     .enableVibration(true)
                     .setDismissable(true).show();
-            email.setError("Empty field");
-            password.setError("Empty field");
+            email.setError(getString(R.string.empty));
+            password.setError(getString(R.string.empty));
         } else {
             firebaseAuth.signInWithEmailAndPassword(Email, Password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

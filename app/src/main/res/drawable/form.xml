@@ -3,14 +3,17 @@
     <item android:state_pressed="false">
         <shape>
             <stroke android:color="@color/gray" android:width="2dp" ></stroke>
-            <corners android:radius="2dp"></corners>
+            <corners android:radius="30dp"></corners>
+            <gradient android:startColor="@color/white" android:endColor="@color/white"/>
 
         </shape>
     </item>
     <item>
         <shape>
             <stroke android:color="@color/login_form_details_light" android:width="2dp"></stroke>
-            <corners android:radius="2dp"></corners>
+            <corners android:radius="30dp"></corners>
+            <gradient android:startColor="@color/white" android:endColor="@color/white"/>
+
         </shape>
     </item>
 </selector>
