@@ -41,5 +41,9 @@
     <string name="email_c">Contact email</string>
     <string name="rent_st">Rent store</string>
     <string name="sing_up">Sing up</string>
+    <string name="item_list">Item list</string>
+    <string name="add_item">Add a new item</string>
+    <string name="profile">Profile</string>
+    <string name="alredy">¿Already a member? Login Here.</string>
 
 </resources>

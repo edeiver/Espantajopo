@@ -6,11 +6,11 @@
         <item
             android:id="@+id/nav_Additem"
             android:icon="@drawable/ic_add"
-            android:title="Add a new item" />
+            android:title="@string/add_item" />
         <item
             android:id="@+id/nav_List"
             android:icon="@drawable/ic_item"
-            android:title="Item list" />
+            android:title="@string/item_list" />
     </group>
     <item android:title="Acount">
         <menu>
@@ -18,7 +18,7 @@
                 <item
                     android:id="@+id/nav_profile"
                     android:icon="@drawable/ic_person"
-                    android:title="Profile"
+                    android:title="@string/profile"
                     />
             </group>
 

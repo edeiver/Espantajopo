@@ -313,7 +313,7 @@
                 android:background="@drawable/et_bg"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:text="Already a member? Login Here"
+                android:text="@string/alredy"
                 android:textAllCaps="false"
                 android:textColor="@color/login_from_details"
                 android:textSize="13sp" />

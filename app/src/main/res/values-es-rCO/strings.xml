@@ -39,4 +39,8 @@
     <string name="email_c">Email del contacto</string>
     <string name="rent_st">Tienda de alquiler</string>
     <string name="sing_up">Crear cuenta</string>
+    <string name="item_list">Lista de articulos</string>
+    <string name="add_item">Añadir nuevo articulo</string>
+    <string name="profile">Perfil</string>
+    <string name="alredy">¿Ya estas registrado? Inicia sesion aqui.</string>
 </resources>
