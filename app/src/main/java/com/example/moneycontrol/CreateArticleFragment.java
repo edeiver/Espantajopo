@@ -39,8 +39,7 @@ public class CreateArticleFragment extends Fragment {
     private Button BtnCreate;
     private EditText ArticleName, ArticleDesc, Price;
     private RecyclerView recyclerView;
-    private UserAdapter userAdapter;
-    private String currentArticleId, currentUserId, Image;
+    private String currentArticleId, currentUserId, Image, Email;
     private FirebaseAuth firebaseAuth;
     private ArrayList<Articles> articlesArrayList = new ArrayList<>();
     private Button BtnUpload;
@@ -56,6 +55,7 @@ public class CreateArticleFragment extends Fragment {
         RootReference = FirebaseDatabase.getInstance().getReference();
         currentArticleId = RootReference.push().getKey();
         currentUserId = firebaseAuth.getCurrentUser().getUid();
+        Email=firebaseAuth.getCurrentUser().getEmail();
         myStorage = FirebaseStorage.getInstance().getReference();
         BtnCreate = view.findViewById(R.id.btnCreateArticle);
         ArticleName = view.findViewById(R.id.TxtArticleName);
@@ -101,7 +101,7 @@ public class CreateArticleFragment extends Fragment {
                                         .setDismissable(true)
                                         .enableProgress(true)
                                         .show();
-                                String IdOn, NameOn, DescriptionOn, UserIdOn;
+                                final String IdOn, NameOn, DescriptionOn, UserIdOn, EmailOn;
                                 Double PriceOn;
                                 String url = uri.toString();
                                 IdOn = currentArticleId;
@@ -109,6 +109,7 @@ public class CreateArticleFragment extends Fragment {
                                 DescriptionOn = ArticleDesc.getText().toString();
                                 PriceOn = Double.parseDouble(Price.getText().toString());
                                 UserIdOn = currentUserId;
+                                EmailOn=Email;
                                 Map<String, Object> ArticleData = new HashMap<>();
                                 ArticleData.put("IdArticle", IdOn);
                                 ArticleData.put("Name", NameOn);
@@ -116,6 +117,7 @@ public class CreateArticleFragment extends Fragment {
                                 ArticleData.put("Price", PriceOn);
                                 ArticleData.put("Image", url);
                                 ArticleData.put("UserId", UserIdOn);
+                                ArticleData.put("EmailCurrentUser",EmailOn);
                                 RootReference.child("Articles").push().setValue(ArticleData).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {

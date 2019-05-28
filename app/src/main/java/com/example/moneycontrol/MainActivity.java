@@ -51,9 +51,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         login = findViewById(R.id.BtnLogin);
         email = findViewById(R.id.userName);
         password = findViewById(R.id.password);
-       /* or = findViewById(R.id.or);*/
         button = findViewById(R.id.BtnSingUp);
-       /* v2 = findViewById(R.id.line2);*/
         v = findViewById(R.id.line1);
         v3 = findViewById(R.id.footer_line);
         load = findViewById(R.id.loading);
@@ -62,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainActivity.this, SingUp.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -130,21 +127,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount signInAccount) {
-       /*
-        progressBar.setVisibility(View.VISIBLE);
-        load.setVisibility(View.VISIBLE);
-        sigInButton.setVisibility(View.GONE);
-        button.setVisibility(View.GONE);
-        or.setVisibility(View.GONE);
-        email.setVisibility(View.GONE);
-        password.setVisibility(View.GONE);
-        login.setVisibility(View.GONE);
-        v.setVisibility(View.GONE);
-        v2.setVisibility(View.GONE);
-        v3.setVisibility(View.GONE);
-        rpass.setVisibility(View.GONE);
-        */
-
         Alerter.create(MainActivity.this)
                 .setTitle(R.string.loading)
                 .setBackgroundColorRes(R.color.colorPrimary)
@@ -159,20 +141,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
-                /* progressBar.setVisibility(View.GONE);
-                sigInButton.setVisibility(View.VISIBLE);
-                button.setVisibility(View.VISIBLE);
-                or.setVisibility(View.VISIBLE);
-                email.setVisibility(View.VISIBLE);
-                password.setVisibility(View.VISIBLE);
-                login.setVisibility(View.VISIBLE);
-                v.setVisibility(View.VISIBLE);
-                v2.setVisibility(View.VISIBLE);
-                v3.setVisibility(View.VISIBLE);
-                load.setVisibility(View.GONE);
-                rpass.setVisibility(View.VISIBLE); */
-
                 if (!task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), R.string.firebase_auth_error, Toast.LENGTH_SHORT).show();
                 }
@@ -190,13 +158,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     protected void onStop() {
         super.onStop();
         if (firebaseAuthListener != null) {
-            firebaseAuth.removeAuthStateListener(firebaseAuthListener);//Toast.makeText(getApplicationContext(), R.string.close_s, Toast.LENGTH_LONG).show();
+            firebaseAuth.removeAuthStateListener(firebaseAuthListener);
         }
     }
 
     private void goSingup() {
         Intent intent = new Intent(this, SingUp.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
@@ -209,8 +176,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     .setIcon(R.drawable.ic_format_list)
                     .enableVibration(true)
                     .setDismissable(true).show();
-            email.setError("Empty field"/*,getResources().getDrawable(R.drawable.ic_logout)*/);
-            password.setError("Empty field"/*,getResources().getDrawable(R.drawable.ic_logout)*/);
+            email.setError("Empty field");
+            password.setError("Empty field");
         } else {
             firebaseAuth.signInWithEmailAndPassword(Email, Password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

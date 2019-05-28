@@ -32,11 +32,13 @@
     <string name="price">Price</string>
     <string name="article">Item</string>
     <string name="article_des">Description of the article</string>
-    <string name="article_price">Item price</string>
+    <string name="article_price">Item price per day</string>
     <string name="up_and_cre">Upload Image An Create The Article</string>
     <string name="create_and_upload">¡The new article has been created!</string>
     <string name="upload_error">¡Error uploading the image!</string>
     <string name="logout">Logout</string>
     <string name="invalid">Invalid field</string>
+    <string name="email_c">Contact email</string>
+    <string name="rent_st">Rent store</string>
 
 </resources>

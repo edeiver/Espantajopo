@@ -7,17 +7,19 @@ public class Articles {
     private String Image;
     private String IdUser;
     private String IdArticle;
+    private String EmailUser;
 
     public Articles() {
     }
 
-    public Articles(String name, String description, Double price, String image, String idUser, String idArticle) {
+    public Articles(String name, String description, Double price, String image, String idUser, String idArticle, String emailUser) {
         Name = name;
         Description = description;
         Price = price;
         Image = image;
         IdUser = idUser;
         IdArticle = idArticle;
+        EmailUser=emailUser;
     }
 
     public String getName() {
@@ -66,5 +68,13 @@ public class Articles {
 
     public void setIdArticle(String idArticle) {
         IdArticle = idArticle;
+    }
+
+    public String getEmailUser() {
+        return EmailUser;
+    }
+
+    public void setEmailUser(String emailUser) {
+        EmailUser = emailUser;
     }
 }

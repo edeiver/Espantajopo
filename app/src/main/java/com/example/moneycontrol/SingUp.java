@@ -34,7 +34,6 @@ public class SingUp extends AppCompatActivity {
     private Button BtnSingup;
     private EditText Name, Lastname,Email, Password, Password2;
     private RecyclerView recyclerView;
-    private UserAdapter userAdapter;
     private String currentUserId;
     FirebaseAuth firebaseAuth;
     private ArrayList<User> userArrayList = new ArrayList<>();

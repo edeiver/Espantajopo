@@ -30,10 +30,12 @@
     <string name="price">Precio</string>
     <string name="article">Articulo</string>
     <string name="article_des">Descripcion del articulo</string>
-    <string name="article_price">Precio del articulo</string>
+    <string name="article_price">Precio del articulo por dia</string>
     <string name="up_and_cre">Subir imagen y crear el articulo</string>
     <string name="create_and_upload">¡Se ha creado el nuevo articulo!</string>
     <string name="upload_error">¡Error al subir la imagen!</string>
     <string name="logout">Cerrar Sesion</string>
     <string name="invalid">Campo invalido</string>
+    <string name="email_c">Contact email</string>
+    <string name="rent_st">Tienda de alquiler</string>
 </resources>

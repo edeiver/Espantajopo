@@ -25,9 +25,9 @@ import com.google.firebase.database.ValueEventListener;
 public class ArticlesFragments extends Fragment  {
     private View ArticlesView;
     private RecyclerView myArticlesList;
-    private DatabaseReference ArticlesRef, UsersRef;
+    private DatabaseReference ArticlesRef, UsersRef,emailref;
     private FirebaseAuth mAuth;
-    private String currentUserId;
+    private String currentUserId, email;
     public ArticlesFragments() {
     }
 
@@ -39,6 +39,7 @@ public class ArticlesFragments extends Fragment  {
         myArticlesList.setLayoutManager(new LinearLayoutManager(getContext()));
         mAuth = FirebaseAuth.getInstance();
         currentUserId=mAuth.getCurrentUser().getUid();
+        email=mAuth.getCurrentUser().getEmail();
         ArticlesRef = FirebaseDatabase.getInstance().getReference().child("Articles");
         UsersRef = FirebaseDatabase.getInstance().getReference().child("User");
         return ArticlesView;
@@ -63,9 +64,11 @@ public class ArticlesFragments extends Fragment  {
                         String ArticleName= dataSnapshot.child("Name").getValue().toString();
                         String ArticleDesc= dataSnapshot.child("Description").getValue().toString();
                         String ArticlePrice= dataSnapshot.child("Price").getValue().toString();
+                        String Email =dataSnapshot.child("EmailCurrentUser").getValue().toString();
                         holder.articleName.setText(ArticleName);
                         holder.articleDescription.setText(ArticleDesc);
                         holder.articlePrice.setText(ArticlePrice);
+                        holder.emaiLC.setText(Email);
                         Glide.with(getContext()).load(ArticleImage).placeholder(R.drawable.ic_item).into(holder.imgArticle);
 
                     }else{
@@ -100,15 +103,15 @@ public class ArticlesFragments extends Fragment  {
         adapter.startListening();
     }
     public static class ArticlesViewHolder extends RecyclerView.ViewHolder{
-        TextView articleName, articleDescription, articlePrice;
+        TextView articleName, articleDescription, articlePrice, emaiLC;
         ImageView imgArticle;
-
         public ArticlesViewHolder(@NonNull View itemView) {
             super(itemView);
             articleName=itemView.findViewById(R.id.article_name);
             articleDescription =itemView.findViewById(R.id.article_desc);
             articlePrice=itemView.findViewById(R.id.article_price);
             imgArticle=itemView.findViewById(R.id.article_img);
+            emaiLC=itemView.findViewById(R.id.article_email);
         }
     }
 }
